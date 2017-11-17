@@ -1,0 +1,785 @@
+format 214
+"project_java"
+  revision 3
+  modified_by 4 "Antoine"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  
+  classdiagramsettings draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes gradient none show_stereotype_properties no end
+  
+  usecasediagramsettings package_name_in_tab no show_context_mode no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes gradient none show_stereotype_properties no end
+  
+  sequencediagramsettings show_full_operations_definition no show_class_of_operation no write_horizontally yes instances_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes gradient none show_stereotype_properties no show_class_context_mode no show_msg_context_mode no end
+  
+  collaborationdiagramsettings show_full_operations_definition no show_class_of_operation no show_hierarchical_rank no write_horizontally yes instances_drawing_mode natural drawing_language uml package_name_in_tab no show_class_pack_context_mode no show_msg_context_mode no draw_all_relations yes shadow yes gradient none show_stereotype_properties no end
+  
+  objectdiagramsettings write_horizontally yes package_name_in_tab no show_class_pack_context_mode no auto_label_position yes draw_all_relations yes shadow yes gradient none show_stereotype_properties no end
+  
+  componentdiagramsettings package_name_in_tab no show_context_mode no auto_label_position yes draw_all_relations yes shadow yes gradient none
+   draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no end
+  
+  deploymentdiagramsettings package_name_in_tab no show_context_mode no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes gradient none
+   draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no end
+  
+  statediagramsettings package_name_in_tab no show_context_mode no auto_label_position yes write_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes gradient none
+   show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no end
+  
+  activitydiagramsettings package_name_in_tab no show_context_mode no show_opaque_action_definition no auto_label_position yes write_label_horizontally no draw_all_relations yes shadow yes gradient none
+   show_infonote yes drawing_language uml show_stereotype_properties no end
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white generalization_color black 
+  dpi 0
+  font_size 10
+  diagram_format A4
+
+  image_root_dir ""
+
+  mark_for_import
+  
+  classview 128004 "Emprunteur"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    classdiagram 128004 "Location"
+      classdiagramsettings draw_all_relations no member_max_width 0 end
+      size A4
+    end
+
+    class 128004 "Emprunteur"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128900 // <association>
+	relation_ref 128516 // <association>
+      end
+
+      classrelation 129028 // <association>
+	relation 128644 ----
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 129028 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 129156 // <association>
+	  association_type class_ref 128516 // Location
+      end
+
+      classrelation 129540 // <composition>
+	relation 128900 *---
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 129540 // <composition>
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 129668 // <composition>
+      end
+
+      classrelation 130692 // <composition>
+	relation_ref 129412 // <composition>
+      end
+
+      attribute 128004 "id"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128132 "nom"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128260 "prenom"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128388 "adresse"
+	private type class_ref 128132 // Adresse
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 128004 "louer"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 128132 "ramener"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128132 "Adresse"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128772 // <association>
+	relation 128516 ----
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 128772 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 128900 // <association>
+      end
+
+      attribute 128644 "numero"
+	private explicit_type "ushort"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128772 "rue"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128900 "cp"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129028 "ville"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128260 "Emprunteurs"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129668 // <composition>
+	relation_ref 128900 // <composition>
+      end
+
+      classrelation 130564 // <composition>
+	relation 129412 *---
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 130564 // <composition>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 130692 // <composition>
+      end
+
+      attribute 128516 "emprunteurs"
+	private explicit_type "ArrayList<Emprunteur>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128388 "Exemplaire"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128516 // <composition>
+	relation 128388 *---
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 128516 // <composition>
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 128644 // <composition>
+      end
+
+      classrelation 129156 // <association>
+	relation_ref 128644 // <association>
+      end
+
+      classrelation 129796 // <composition>
+	relation 129028 *---
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 129796 // <composition>
+	  b role_name "" multiplicity "*" private
+	    classrelation_ref 129924 // <composition>
+      end
+
+      classrelation 130436 // <composition>
+	relation_ref 129284 // <composition>
+      end
+
+      classrelation 130948 // <composition>
+	relation_ref 129540 // <composition>
+      end
+
+      attribute 129924 "numero"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130052 "kilometres"
+	private explicit_type "uint"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128516 "Location"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129412 // <association>
+	relation_ref 128772 // <association>
+      end
+
+      classrelation 131076 // <association>
+	relation 129668 ----
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 131076 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 131204 // <association>
+      end
+
+      classrelation 131332 // <association>
+	relation 129796 ----
+	  a role_name "" private
+	    classrelation_ref 131332 // <association>
+	  b role_name "" private
+	    classrelation_ref 131460 // <association>
+      end
+
+      classrelation 131844 // <association>
+	relation 130052 ----
+	  a role_name "" multiplicity "0..1" private
+	    classrelation_ref 131844 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 131972 // <association>
+      end
+
+      attribute 129156 "numero"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129284 "debut"
+	private type class_ref 128644 // Date
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129412 "fin"
+	private type class_ref 128644 // Date
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131460 "rendu"
+	private type class_ref 128644 // Date
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128644 "Date"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129284 // <association>
+	relation 128772 ----
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 129284 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 129412 // <association>
+      end
+
+      attribute 129540 "jour"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129668 "mois"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129796 "annee"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128772 "Flotte"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129924 // <composition>
+	relation_ref 129028 // <composition>
+      end
+
+      classrelation 130820 // <composition>
+	relation 129540 *---
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 130820 // <composition>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 130948 // <composition>
+      end
+
+      attribute 130180 "exemplaires"
+	private explicit_type "ArrayList<Exemplaire>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128900 "Vehicule"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128260 // <composition>
+	relation 128260 *---
+	  a role_name "" private
+	    classrelation_ref 128260 // <composition>
+	  b role_name "" private
+	    classrelation_ref 128388 // <composition>
+      end
+
+      classrelation 128644 // <composition>
+	relation_ref 128388 // <composition>
+      end
+
+      classrelation 130180 // <composition>
+	relation_ref 129156 // <composition>
+      end
+
+      classrelation 130308 // <composition>
+	relation 129284 *---
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 130308 // <composition>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 130436 // <composition>
+      end
+
+      attribute 130308 "marque"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 129028 "Moto"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128004 // <generalisation>
+	relation 128004 ---|>
+	  a public
+	    classrelation_ref 128004 // <generalisation>
+	  b parent class_ref 128900 // Vehicule
+      end
+
+      attribute 130692 "cylindree"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 129156 "Auto"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128132 // <generalisation>
+	relation 128132 ---|>
+	  a public
+	    classrelation_ref 128132 // <generalisation>
+	  b parent class_ref 128900 // Vehicule
+      end
+
+      attribute 130436 "modele"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130564 "luxe"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 129284 "Vehicules"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128388 // <composition>
+	relation_ref 128260 // <composition>
+      end
+
+      classrelation 130052 // <composition>
+	relation 129156 *---
+	  a role_name "" multiplicity "*" private
+	    classrelation_ref 130052 // <composition>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 130180 // <composition>
+      end
+
+      attribute 130820 "vehicules"
+	private explicit_type "ArrayList<Vehicule>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 135812 "Devis"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 131204 // <association>
+	relation_ref 129668 // <association>
+      end
+
+      classrelation 131716 // <association>
+	relation_ref 129924 // <association>
+      end
+
+      classrelation 132100 // <association>
+	relation 130180 ----
+	  a role_name "" multiplicity "0..1" private
+	    classrelation_ref 132100 // <association>
+	  b role_name "" multiplicity "1" private
+	    classrelation_ref 132228 // <association>
+      end
+
+      attribute 130948 "duree"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131076 "assurance"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131204 "prix"
+	private explicit_type "uint"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 128260 "printPdf"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 135940 "Facture"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 131460 // <association>
+	relation_ref 129796 // <association>
+      end
+
+      classrelation 131588 // <association>
+	relation 129924 ----
+	  a role_name "" multiplicity "1" private
+	    classrelation_ref 131588 // <association>
+	  b role_name "" multiplicity "0..1" private
+	    classrelation_ref 131716 // <association>
+      end
+
+      classrelation 131972 // <association>
+	relation_ref 130052 // <association>
+      end
+
+      classrelation 132228 // <association>
+	relation_ref 130180 // <association>
+      end
+
+      attribute 131332 "retard"
+	private explicit_type "short"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+  end
+end

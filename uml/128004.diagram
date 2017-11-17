@@ -1,0 +1,112 @@
+format 214
+
+classcanvas 128004 class_ref 128004 // Emprunteur
+  classdiagramsettings member_max_width 0 end
+  xyz 327.123 45.0756 2000
+end
+classcanvas 128132 class_ref 128132 // Adresse
+  classdiagramsettings member_max_width 0 end
+  xyz 216.329 51.8558 2000
+end
+classcanvas 128260 class_ref 128260 // Emprunteurs
+  classdiagramsettings member_max_width 0 end
+  xyz 454.317 65.896 2000
+end
+classcanvas 128388 class_ref 128388 // Exemplaire
+  classdiagramsettings member_max_width 0 end
+  xyz 329.123 210.629 2000
+end
+classcanvas 128516 class_ref 128516 // Location
+  classdiagramsettings member_max_width 0 end
+  xyz 449.591 131.056 2000
+end
+classcanvas 128644 class_ref 128644 // Date
+  classdiagramsettings member_max_width 0 end
+  xyz 554.213 131.612 2000
+end
+classcanvas 128772 class_ref 128772 // Flotte
+  classdiagramsettings member_max_width 0 end
+  xyz 329.863 294.345 2000
+end
+classcanvas 128900 class_ref 128900 // Vehicule
+  classdiagramsettings member_max_width 0 end
+  xyz 221.681 213.583 2000
+end
+classcanvas 129028 class_ref 129028 // Moto
+  classdiagramsettings member_max_width 0 end
+  xyz 170.953 292.528 2000
+end
+classcanvas 129156 class_ref 129156 // Auto
+  classdiagramsettings member_max_width 0 end
+  xyz 249.504 292.921 2000
+end
+classcanvas 129284 class_ref 129284 // Vehicules
+  classdiagramsettings member_max_width 0 end
+  xyz 108.139 213.46 2000
+end
+classcanvas 131332 class_ref 135812 // Devis
+  classdiagramsettings member_max_width 0 end
+  xyz 452.974 230.516 2000
+end
+classcanvas 131588 class_ref 135940 // Facture
+  classdiagramsettings member_max_width 0 end
+  xyz 454.089 331.587 2000
+end
+relationcanvas 129412 relation_ref 128004 // <generalisation>
+  from ref 129028 z 2001 to ref 128900
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129540 relation_ref 128132 // <generalisation>
+  from ref 129156 z 2001 to ref 128900
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129924 relation_ref 128516 // <association>
+  from ref 128132 z 2001 to ref 128004
+  no_role_a no_role_b
+  multiplicity_a_pos 310 95 3000 multiplicity_b_pos 276 94 3000
+end
+relationcanvas 130052 relation_ref 128644 // <association>
+  from ref 128004 z 2001 to ref 128388
+  no_role_a no_role_b
+  multiplicity_a_pos 347 196 3000 multiplicity_b_pos 345 144 3000
+end
+relationcanvas 130308 relation_ref 128772 // <association>
+  from ref 128644 z 2001 to ref 128516
+  no_role_a no_role_b
+  multiplicity_a_pos 511 173 3000 multiplicity_b_pos 541 169 3000
+end
+relationcanvas 130820 relation_ref 129156 // <composition>
+  from ref 129284 z 2001 to ref 128900
+  no_role_a no_role_b
+  multiplicity_a_pos 210 238 3000 multiplicity_b_pos 172 238 3000
+end
+relationcanvas 130948 relation_ref 129284 // <composition>
+  from ref 128900 z 2001 to ref 128388
+  no_role_a no_role_b
+  multiplicity_a_pos 318 239 3000 multiplicity_b_pos 280 238 3000
+end
+relationcanvas 131076 relation_ref 129412 // <composition>
+  from ref 128260 z 2001 to ref 128004
+  no_role_a no_role_b
+  multiplicity_a_pos 405 94 3000 multiplicity_b_pos 437 91 3000
+end
+relationcanvas 131204 relation_ref 129540 // <composition>
+  from ref 128772 z 2001 to ref 128388
+  no_role_a no_role_b
+  multiplicity_a_pos 347 267 3000 multiplicity_b_pos 345 280 3000
+end
+relationcanvas 131460 relation_ref 129668 // <association>
+  from ref 128516 z 2001 to ref 131332
+  no_role_a no_role_b
+  multiplicity_a_pos 465 217 3000 multiplicity_b_pos 464 212 3000
+end
+relationcanvas 132228 relation_ref 130180 // <association>
+  from ref 131332 z 2001 to ref 131588
+  no_role_a no_role_b
+  multiplicity_a_pos 453 320 3000 multiplicity_b_pos 466 303 3000
+end
+line 130180 -_-_
+  from ref 128516 z 2002 to ref 130052
+end
