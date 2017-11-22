@@ -1,0 +1,13 @@
+window_sizes 1440 750 337 1097 531 167
+cleanlooks_style
+diagrams
+  active  classdiagram_ref 128004 // Location
+    1097 531 109 A4 0 0
+end
+show_stereotypes
+selected class_ref 142468 // Locations
+open
+  classdiagram_ref 128004 // Location
+  deploymentview_ref 128132 // Emprunteur
+end
+end
