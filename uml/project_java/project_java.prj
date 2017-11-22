@@ -1,7 +1,8 @@
 format 214
 "project_java"
-  revision 3
+  revision 5
   modified_by 4 "Antoine"
+  java_root_dir "/Users/Antoine/Documents/workspace/project_java/uml/"
 
 
   
@@ -55,6 +56,7 @@ format 214
     
     activitydiagramsettings
      end
+    associated_deployment_view deploymentview_ref 128132 // Emprunteur
     classdiagram 128004 "Location"
       classdiagramsettings draw_all_relations no member_max_width 0 end
       size A4
@@ -63,7 +65,9 @@ format 214
     class 128004 "Emprunteur"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -166,12 +170,50 @@ format 214
 	
 	
       end
+
+      operation 135940 "modifierAdresse"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 136068 "modifier"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      attribute 145412 "emprunteurs"
+	private type class_ref 128260 // Emprunteurs
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 128132 "Adresse"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -186,8 +228,8 @@ format 214
 	    classrelation_ref 128900 // <association>
       end
 
-      attribute 128644 "numero"
-	private explicit_type "ushort"
+      attribute 128644 "numero1"
+	private explicit_type "short"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -238,7 +280,9 @@ format 214
     class 128260 "Emprunteurs"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -258,7 +302,7 @@ format 214
       end
 
       attribute 128516 "emprunteurs"
-	private explicit_type "ArrayList<Emprunteur>"
+	private explicit_type "List<Emprunteur>"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -268,12 +312,38 @@ format 214
 	mysql_decl ""
 	MysqlColumn
       end
+
+      operation 135428 "insererEmprunteur"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135556 "supprimerEmprunteur"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 128388 "Exemplaire"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -331,12 +401,38 @@ format 214
 	mysql_decl ""
 	MysqlColumn
       end
+
+      attribute 145540 "flotte"
+	private type class_ref 128772 // Flotte
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145668 "vehicule"
+	private type class_ref 128900 // Vehicule
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 128516 "Location"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -418,12 +514,102 @@ format 214
 	mysql_decl ""
 	MysqlColumn
       end
+
+      operation 134916 "devis"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135044 "facture"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 138884 // <composition>
+	relation_ref 136708 // <composition>
+      end
+
+      attribute 138244 "emprunteur"
+	private type class_ref 128004 // Emprunteur
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 138372 "exemplaire"
+	private type class_ref 128388 // Exemplaire
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 138500 "devis"
+	private type class_ref 135812 // Devis
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 138628 "facture"
+	private type class_ref 135940 // Facture
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145924 "locations"
+	private type class_ref 142468 // Locations
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 128644 "Date"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -478,7 +664,9 @@ format 214
     class 128772 "Flotte"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -498,7 +686,7 @@ format 214
       end
 
       attribute 130180 "exemplaires"
-	private explicit_type "ArrayList<Exemplaire>"
+	private explicit_type "List<Exemplaire>"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -508,12 +696,38 @@ format 214
 	mysql_decl ""
 	MysqlColumn
       end
+
+      operation 135172 "insererExemplaire"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135300 "supprimerExemplaire"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 128900 "Vehicule"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -555,12 +769,38 @@ format 214
 	mysql_decl ""
 	MysqlColumn
       end
+
+      attribute 138116 "exemplaires"
+	private explicit_type "ArrayList<Exemplaire>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 145796 "vehicules"
+	private type class_ref 129284 // Vehicules
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
     end
 
     class 129028 "Moto"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -590,7 +830,9 @@ format 214
     class 129156 "Auto"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -632,7 +874,9 @@ format 214
     class 129284 "Vehicules"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -652,7 +896,7 @@ format 214
       end
 
       attribute 130820 "vehicules"
-	private explicit_type "ArrayList<Vehicule>"
+	private explicit_type "List<Vehicule>"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -662,12 +906,38 @@ format 214
 	mysql_decl ""
 	MysqlColumn
       end
+
+      operation 135684 "insererVehicule"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135812 "supprimerVehicule"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 135812 "Devis"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -742,7 +1012,9 @@ format 214
     class 135940 "Facture"
       visibility package 
       cpp_decl ""
-      java_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
       php_decl ""
       python_2_2 python_decl ""
       idl_decl ""
@@ -779,6 +1051,215 @@ format 214
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      operation 134788 "printPdf"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 142468 "Locations"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 137988 "locations"
+	private explicit_type "List<Location>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138756 // <composition>
+	relation 136708 *---
+	  a role_name "" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 138756 // <composition>
+	  b role_name "" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138884 // <composition>
+      end
+    end
+
+  end
+
+  deploymentview 128132 "Emprunteur"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 139396 "Emprunteur"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128004 // Emprunteur
+      end
+    end
+
+    artifact 139524 "Adresse"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128132 // Adresse
+      end
+    end
+
+    artifact 139652 "Emprunteurs"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128260 // Emprunteurs
+      end
+    end
+
+    artifact 139780 "Exemplaire"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128388 // Exemplaire
+      end
+    end
+
+    artifact 139908 "Location"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128516 // Location
+      end
+    end
+
+    artifact 140036 "Date"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128644 // Date
+      end
+    end
+
+    artifact 140164 "Flotte"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128772 // Flotte
+      end
+    end
+
+    artifact 140292 "Vehicule"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128900 // Vehicule
+      end
+    end
+
+    artifact 140420 "Moto"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 129028 // Moto
+      end
+    end
+
+    artifact 140548 "Auto"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 129156 // Auto
+      end
+    end
+
+    artifact 140676 "Vehicules"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 129284 // Vehicules
+      end
+    end
+
+    artifact 140804 "Devis"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135812 // Devis
+      end
+    end
+
+    artifact 140932 "Facture"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135940 // Facture
+      end
+    end
+
+    artifact 141060 "Locations"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 142468 // Locations
       end
     end
   end

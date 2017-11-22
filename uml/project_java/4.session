@@ -2,23 +2,12 @@ window_sizes 1440 750 337 1097 531 167
 cleanlooks_style
 diagrams
   active  classdiagram_ref 128004 // Location
-    1096 531 127 A4 37 0
+    1097 531 109 A4 0 0
 end
 show_stereotypes
-selected attribute_ref 131460 // rendu
+selected class_ref 142468 // Locations
 open
-  class_ref 128004 // Emprunteur
-  class_ref 128132 // Adresse
-  class_ref 128260 // Emprunteurs
-  class_ref 128388 // Exemplaire
-  class_ref 128516 // Location
-  class_ref 128644 // Date
-  class_ref 128772 // Flotte
-  class_ref 128900 // Vehicule
-  class_ref 129028 // Moto
-  class_ref 129156 // Auto
-  class_ref 129284 // Vehicules
-  class_ref 135812 // Devis
-  class_ref 135940 // Facture
+  classdiagram_ref 128004 // Location
+  deploymentview_ref 128132 // Emprunteur
 end
 end
