@@ -1,7 +1,20 @@
+package principal;
+
+import java.util.List;
 
 class Locations {
-  private List<Location> locations;
+	private List<Location> locations;
 
-  private <Location> ;
-
+	public List<Location> getLocations() {
+		return locations;
+	}
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
+	
+	public Locations(List<Location> locations) {
+		this.locations = locations;
+	}
+	
+	
 }
