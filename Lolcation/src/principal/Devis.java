@@ -1,3 +1,4 @@
+package principal;
 
 class Devis {
   private short duree;

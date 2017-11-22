@@ -1,4 +1,6 @@
 
+package principal;
+
 class Exemplaire {
   private short numero;
 
