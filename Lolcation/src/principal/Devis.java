@@ -6,7 +6,7 @@ class Devis {
 
   private int prix;
 
-  public  printPdf() {
+  public void printPdf() {
   }
 
 }

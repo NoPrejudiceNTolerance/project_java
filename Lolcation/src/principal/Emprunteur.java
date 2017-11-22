@@ -8,17 +8,16 @@ class Emprunteur {
 
   private Adresse adresse;
 
-  public  louer() {
-	  // Antoine tu as vrmt un petit sexe
+  public void louer() {
   }
 
-  public  ramener() {
+  public void  ramener() {
   }
 
-  public  modifierAdresse() {
+  public void modifierAdresse() {
   }
 
-  public  modifier() {
+  public void  modifier() {
   }
 
   private Emprunteurs emprunteurs;
