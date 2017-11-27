@@ -3,6 +3,11 @@ package principal;
 class Moto extends Vehicule {
 	private String cylindree;
 
+	public Moto(String marque, String cylindree) {
+		super(marque);
+		this.cylindree = cylindree;
+	}
+	
 	public String getCylindree() {
 		return cylindree;
 	}
@@ -10,9 +15,6 @@ class Moto extends Vehicule {
 		this.cylindree = cylindree;
 	}
 	
-	public Moto(String marque, String cylindree) {
-		super(marque);
-		this.cylindree = cylindree;
-	}
+	
 	
 }

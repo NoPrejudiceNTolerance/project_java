@@ -7,6 +7,10 @@ abstract class Vehicule {
 	private ArrayList<Exemplaire> exemplaires;
 	private Vehicules vehicules;
 	
+	public Vehicule(String marque) {//a completer
+		this.marque = marque;
+	}
+	
 	public String getMarque() {
 		return marque;
 	}
@@ -28,9 +32,6 @@ abstract class Vehicule {
 		this.vehicules = vehicules;
 	}
 	
-	public Vehicule(String marque) {//a completer
-		this.marque = marque;
-	}
 	
 	
 }

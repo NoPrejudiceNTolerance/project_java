@@ -2,8 +2,7 @@ package principal;
 
 class Auto extends Vehicule {
   private String modele;
-
-  private boolean luxe;
+  private boolean luxe;  
   
   public Auto(String modele, boolean luxe, String marque) {
 	super(marque);
