@@ -1,29 +1,32 @@
 package principal;
 
+import java.util.Iterator;
+
 class Auto extends Vehicule {
   private String modele;
-  private boolean luxe;  
+  private Gamme gamme;  
   
-  public Auto(String modele, boolean luxe, String marque) {
+  public Auto(String marque, String modele, boolean isLuxe) {
 	super(marque);
 	this.modele = modele;
-	this.luxe = luxe;
+	if(isLuxe) {gamme = Gamme.LUXE;} else {gamme = Gamme.STANDARD;}
   }
+
+  public Gamme getGamme() {
+	return gamme;
+  	}
 
   public String getModele() {
 	return modele;
-  }
+	}
 
-  public void setModele(String modele) {
-	this.modele = modele;
-  }
+  	@Override
+  public Iterator<Vehicule> iterator() {
+	return super.getVehicules().iterator();
+	}
 
-  public boolean isLuxe() {
-	return luxe;
-  }
-
-  public void setLuxe(boolean luxe) {
-	this.luxe = luxe;
-  }
-   
+  public enum Gamme { 
+	  STANDARD,
+	  LUXE;
+}
 }

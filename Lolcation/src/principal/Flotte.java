@@ -1,12 +1,11 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class Flotte {
+class Flotte implements Iterable<Exemplaire>{
 	private List<Exemplaire> exemplaires;
-	
-	
 	
 	public Flotte() {
 		this.exemplaires = new ArrayList<Exemplaire>();
@@ -23,5 +22,14 @@ class Flotte {
 	
 	public void supprimerExemplaire() {
 		
+	}
+
+	@Override
+	public Iterator<Exemplaire> iterator() {
+		return exemplaires.iterator();
+	}
+
+	public void add(Exemplaire exemplaire) {
+		exemplaires.add(exemplaire);
 	}
 }

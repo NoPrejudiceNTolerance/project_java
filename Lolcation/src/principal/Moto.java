@@ -1,5 +1,7 @@
 package principal;
 
+import java.util.Iterator;
+
 class Moto extends Vehicule {
 	private String cylindree;
 
@@ -11,10 +13,10 @@ class Moto extends Vehicule {
 	public String getCylindree() {
 		return cylindree;
 	}
-	public void setCylindree(String cylindree) {
-		this.cylindree = cylindree;
+	
+	@Override
+	public Iterator<Vehicule> iterator() {
+		return super.getVehicules().iterator();
 	}
-	
-	
 	
 }
