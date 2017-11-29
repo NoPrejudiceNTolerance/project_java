@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * The Class Vehicule.
  */
-abstract class Vehicule implements Iterable<Vehicule>{
+abstract class Vehicule implements Iterable<Exemplaire>{
 	
 	/** The marque. */
 	private String marque;
@@ -25,6 +25,7 @@ abstract class Vehicule implements Iterable<Vehicule>{
 		this.marque = marque;
 		this.vehicules = vehicules;
 		this.vehicules.add(this);
+		this.exemplaires = new ArrayList<Exemplaire>();
 	}
 	
 	/**
@@ -58,5 +59,11 @@ abstract class Vehicule implements Iterable<Vehicule>{
 	public Vehicules getVehicules() {
 		return vehicules;
 	}
+
+	@Override
+	public String toString() {
+		return "Vehicule [marque=" + marque + ", exemplaires=" + exemplaires + ", vehicules=" + vehicules + "]";
+	}
+	
 		
 }

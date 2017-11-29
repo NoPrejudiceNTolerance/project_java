@@ -1,5 +1,5 @@
 package principal;
-// TODO: Auto-generated Javadoc
+import java.util.List;
 
 /**
  * Devis d'une location.
@@ -8,31 +8,37 @@ package principal;
  * @see Location
  */
 class Devis {
-  
+ 
   /** The duree. */
-  private short duree;
-
-  /** The assurance. */
-  private boolean assurance;
+  private int duree;
 
   /** The prix. */
   private int prix;
   
+  private Location location;
   /**
    * Instantiates a new devis.
    *
-   * @param duree the duree
-   * @param assurance the assurance
-   * @param prix the prix
+   * @param duree La durée de location
+   * @param assurance false si pas d'assurance true sinon
    */
-  public Devis(short duree, boolean assurance, int prix) {
+  public Devis(Location location) {
 	super();
-	this.duree = duree;
-	this.assurance = assurance;
-	this.prix = prix;
+	this.location = location;
+	this.duree = this.location.getDebut().dureeTo(this.location.getFin());
+	this.prix = calculPrix();
+}
+  /**
+   * Calcul le prix du devis.
+   * @return calculed price
+   */
+  private int calculPrix() {
+	int ratio_location = 
+	
+	return prix;
 }
 
-  /**
+/**
    * Prints the pdf.
    */
   public void printPdf() {

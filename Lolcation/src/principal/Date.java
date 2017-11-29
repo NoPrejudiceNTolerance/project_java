@@ -31,6 +31,21 @@ class Date {
   }
 
   /**
+   * Retourne la durée total en jour de this à dateFin
+   * @param dateFin date de fin
+   * @return
+   */
+  public int dureeTo(Date dateFin) {
+	  int duree = 0;
+	  int diffAnnee =  dateFin.getAnnee() - this.getAnnee();
+	  int diffMois = dateFin.getMois() - this.getMois();
+	  int diffJours = dateFin.getJour() - this.getJour();
+	  
+	  duree = diffJours + diffMois*30 + diffAnnee*365;
+	  return duree;
+  }
+  
+  /**
    * Gets the jour.
    *
    * @return the jour

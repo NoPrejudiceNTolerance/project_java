@@ -50,8 +50,8 @@ class Auto extends Vehicule {
 	   * @see java.lang.Iterable#iterator()
 	   */
 	  @Override
-  public Iterator<Vehicule> iterator() {
-	return super.getVehicules().iterator();
+  public Iterator<Exemplaire> iterator() {
+	return super.getExemplaires().iterator();
 	}
 /**
  * Enumération dans le but de simplifier la gestion des autos de luxe et les autos standards.
@@ -66,4 +66,9 @@ class Auto extends Vehicule {
   	/** The luxe. */
   	LUXE;
 }
+@Override
+public String toString() {
+	return "Auto [modele=" + modele + ", gamme=" + gamme + "]";
+}
+  
 }

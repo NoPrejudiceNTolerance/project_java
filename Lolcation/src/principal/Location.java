@@ -1,12 +1,14 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Location.
  */
-class Location {
+class Location implements Iterable<Exemplaire>{
+	private static short current_numero = 0;
 	
 	/** The numero. */
 	private short numero;
@@ -24,7 +26,7 @@ class Location {
 	private Emprunteur emprunteur;
 	
 	/** The exemplaires. */
-	private ArrayList<Exemplaire> exemplaires;
+	private List<Exemplaire> exemplaires;
 	
 	/** The devis. */
 	private Devis devis;
@@ -34,6 +36,32 @@ class Location {
 	
 	/** The locations. */
 	private Locations locations;
+	
+	/** true si Assurance souscrite, false sinon */
+	private boolean assurance;
+	
+	/**
+	 * Instantiates a new location.
+	 *
+	 * @param debut the debut
+	 * @param fin the fin
+	 * @param emprunteur the emprunteur
+	 * @param exemplaires the exemplaires
+	 * @param locations the locations
+	 */
+	public Location(Date debut, Date fin, Emprunteur emprunteur, List<Exemplaire> exemplaires, boolean assurance, Locations locations) {
+		Location.current_numero =+ 1;
+		this.numero = Location.current_numero;
+		this.debut = debut;
+		this.fin = fin;
+		this.emprunteur = emprunteur;
+		this.exemplaires = exemplaires;
+		this.locations = locations;
+		this.locations.add(this);
+		this.assurance = assurance;
+		this.devis = new Devis();
+	}
+	
 	
 	/**
 	 * Gets the numero.
@@ -130,7 +158,7 @@ class Location {
 	 *
 	 * @return the exemplaire
 	 */
-	public ArrayList<Exemplaire> getExemplaire() {
+	public List<Exemplaire> getExemplaire() {
 		return exemplaires;
 	}
 	
@@ -190,24 +218,6 @@ class Location {
 	}
 	
 	/**
-	 * Instantiates a new location.
-	 *
-	 * @param debut the debut
-	 * @param fin the fin
-	 * @param emprunteur the emprunteur
-	 * @param exemplaires the exemplaires
-	 * @param locations the locations
-	 */
-	public Location(Date debut, Date fin, Emprunteur emprunteur, ArrayList<Exemplaire> exemplaires, Locations locations) {
-		this.debut = debut;
-		this.fin = fin;
-		this.emprunteur = emprunteur;
-		this.exemplaires = exemplaires;
-		this.locations = locations;
-	}
-	
-	
-	/**
 	 * Ajouter exemplaire.
 	 *
 	 * @param exemplaire the exemplaire
@@ -237,6 +247,12 @@ class Location {
 	 */
 	public void facture() {
 		
+	}
+
+
+	@Override
+	public Iterator<Exemplaire> iterator() {
+		return exemplaires.iterator();
 	}
 	
 }

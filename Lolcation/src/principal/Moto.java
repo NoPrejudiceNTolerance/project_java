@@ -35,8 +35,14 @@ class Moto extends Vehicule {
 	 * @see java.lang.Iterable#iterator()
 	 */
 	@Override
-	public Iterator<Vehicule> iterator() {
-		return super.getVehicules().iterator();
+	public Iterator<Exemplaire> iterator() {
+		return super.getExemplaires().iterator();
 	}
+
+	@Override
+	public String toString() {
+		return "Moto [cylindree=" + cylindree + "]";
+	}
+	
 	
 }

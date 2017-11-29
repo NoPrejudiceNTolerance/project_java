@@ -1,15 +1,26 @@
 package principal;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Locations.
  */
-class Locations {
+class Locations implements Iterable<Location> {
 	
 	/** The locations. */
 	private List<Location> locations;
+
+	/**
+	 * Instantiates a new locations.
+
+	 *
+	 * @param locations the locations
+	 */
+	public Locations() {
+		this.locations = new ArrayList<Location>();
+	}
 
 	/**
 	 * Gets the locations.
@@ -19,24 +30,20 @@ class Locations {
 	public List<Location> getLocations() {
 		return locations;
 	}
-	
 	/**
-	 * Sets the locations.
-	 *
-	 * @param locations the new locations
+	 * Ajouter une location.
+	 * @param location Location à ajouter.
 	 */
-	public void setLocations(List<Location> locations) {
-		this.locations = locations;
+	public void add(Location location) {
+		locations.add(location);
+	}
+
+	@Override
+	public Iterator<Location> iterator() {
+		return locations.iterator();
 	}
 	
-	/**
-	 * Instantiates a new locations.
-	 *
-	 * @param locations the locations
-	 */
-	public Locations(List<Location> locations) {
-		this.locations = locations;
-	}
+	
 	
 	
 }

@@ -1,4 +1,7 @@
 package principal;
+
+import java.util.ArrayList;
+
 // TODO: Auto-generated Javadoc
 
 /**
@@ -26,6 +29,8 @@ class Emprunteur {
   /** The emprunteurs. */
   private Emprunteurs emprunteurs;
   
+  /** 
+  
   /**
    * Instantiates a new emprunteur.
    *
@@ -45,14 +50,15 @@ class Emprunteur {
   }
  
   /**
-   * Louer un véhicule.
+   * Louer un (ou plusieurs) véhicule(s).
    * @see Location
    */
-  public void louer() {
+  public void louer(Date debutLoc, Date finLoc, ArrayList<Exemplaire> exemplairesLoc, boolean assurance) {
+	  new Location(debutLoc, finLoc, this, exemplairesLoc, assurance, Test.getLocations());
   }
 
   /**
-   * Ramener un véhicule loué.
+   * Ramener un (ou plusieurs) véhicule(s) loué(s).
    * @see Location
    */
   public void  ramener() {

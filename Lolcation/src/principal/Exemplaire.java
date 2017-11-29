@@ -1,7 +1,5 @@
 
 package principal;
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class Exemplaire.
  */
@@ -96,5 +94,12 @@ class Exemplaire {
 	return vehicule;
   }
 
+@Override
+public String toString() {
+	return "Exemplaire [numero=" + numero + ", kilometres=" + kilometres + ", flotte=" + flotte + ", vehicule="
+			+ vehicule + "]";
+}
+
+  
 }
 

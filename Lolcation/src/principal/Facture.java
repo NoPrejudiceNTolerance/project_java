@@ -23,7 +23,6 @@ class Facture {
 	
 	/**
 	 * Gets the retard.
-	 *
 	 * @return the retard
 	 */
 	public short getRetard() {
