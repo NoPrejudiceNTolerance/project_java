@@ -17,8 +17,8 @@ class Moto extends Vehicule {
 	 * @param marque the marque
 	 * @param cylindree the cylindree
 	 */
-	public Moto(String marque, String cylindree) {
-		super(marque);
+	public Moto(String marque, String cylindree, Vehicules vehicules) {
+		super(marque, vehicules);
 		this.cylindree = cylindree;
 	}
 	

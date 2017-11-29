@@ -8,7 +8,9 @@ package principal;
  * @see Emprunteurs
  */
 class Emprunteur {
-  
+	/** Static var to derterminate id */
+  private static int current_id = 0;
+	
   /** The id. */
   private int id;
   
@@ -33,31 +35,28 @@ class Emprunteur {
    * @param emprunteurs the emprunteurs
    */
   public Emprunteur(String nom, String prenom, Adresse adresse, Emprunteurs emprunteurs) {
-	this.id = 0; // GENERER ALEATOIREMENT
-	this.nom = nom;
-	this.prenom = prenom;
-	this.adresse = adresse;
-	this.emprunteurs = emprunteurs;
+	  Emprunteur.current_id += 1;
+	  this.id = current_id; 
+	  this.nom = nom;
+	  this.prenom = prenom;
+	  this.adresse = adresse;
+	  this.emprunteurs = emprunteurs;
+	  this.emprunteurs.addEmprunteur(this);
   }
  
   /**
-   * Louer.
+   * Louer un véhicule.
+   * @see Location
    */
   public void louer() {
   }
 
   /**
-   * Ramener.
+   * Ramener un véhicule loué.
+   * @see Location
    */
   public void  ramener() {
   }
-
-  /**
-   * Modifier adresse.
-   */
-  public void modifierAdresse() {
-  }
-
   /**
    * Modifier.
    */
@@ -72,16 +71,6 @@ class Emprunteur {
 public int getId() {
 	return id;
 }
-
-/**
- * Sets the id.
- *
- * @param id the new id
- */
-public void setId(int id) {
-	this.id = id;
-}
-
 /**
  * Gets the nom.
  *
@@ -90,7 +79,6 @@ public void setId(int id) {
 public String getNom() {
 	return nom;
 }
-
 /**
  * Sets the nom.
  *
@@ -99,7 +87,6 @@ public String getNom() {
 public void setNom(String nom) {
 	this.nom = nom;
 }
-
 /**
  * Gets the prenom.
  *
@@ -144,5 +131,12 @@ public void setAdresse(Adresse adresse) {
 public Emprunteurs getEmprunteurs() {
 	return emprunteurs;
 }
+
+@Override
+public String toString() {
+	return "Emprunteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", emprunteurs="
+			+ emprunteurs + "]";
+}
   
+
 }

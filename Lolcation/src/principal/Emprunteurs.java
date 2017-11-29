@@ -1,43 +1,46 @@
 package principal;
 /**
  * Liste de tout les emprunteurs.
+
  * @see Emprunteur
- * @author PC-Louis
+ * @author Louis, Antoine
  */
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Emprunteurs.
  */
-class Emprunteurs {
+class Emprunteurs implements Iterable<Emprunteur> {
   
-  /** The emprunteurs. */
+  /** Liste des emprunteurs */
   private List<Emprunteur> emprunteurs;
 
   /**
-   * Instantiates a new emprunteurs.
+   * Instantiates a new emprunteurs
    */
   public Emprunteurs() {
 	this.emprunteurs = new ArrayList<Emprunteur>();
   }
 
-  
   /**
-   * Inserer emprunteur.
-   */
-  public void  insererEmprunteur() {
-	  
-  }
+   * Inserer emprunteur
 
+   * @param emprunteur l'emprunteur à ajouter à la liste
+   * @return true si ok false sinon
+   */
+  public boolean addEmprunteur(Emprunteur emprunteur) {
+	  return emprunteurs.add(emprunteur);
+  }
   /**
-   * Supprimer emprunteur.
+   * Supprimer emprunteur
+	 @param emprunteur Emprunteur à supprimer de la liste
+	 @return true si ok false sinon
    */
-  public void  supprimerEmprunteur() {
-	  
+  public boolean  supprimerEmprunteur(Emprunteur emprunteur) {
+	  return emprunteurs.remove(emprunteur);
   }
-
 
   /**
    * Gets the emprunteurs.
@@ -48,14 +51,9 @@ class Emprunteurs {
 	return emprunteurs;
   }
 
-
-  /**
-   * Sets the emprunteurs.
-   *
-   * @param emprunteurs the new emprunteurs
-   */
-  public void setEmprunteurs(List<Emprunteur> emprunteurs) {
-	this.emprunteurs = emprunteurs;
-  }
+	@Override
+	public Iterator<Emprunteur> iterator() {
+		return emprunteurs.iterator();
+	}
 
 }

@@ -22,8 +22,8 @@ class Auto extends Vehicule {
    * @param modele the modele
    * @param isLuxe true si c'est une auto de luxe false sinon
    */
-  public Auto(String marque, String modele, boolean isLuxe) {
-	super(marque);
+  public Auto(String marque, String modele, boolean isLuxe, Vehicules vehicules) {
+	super(marque, vehicules);
 	this.modele = modele;
 	if(isLuxe) {gamme = Gamme.LUXE;} else {gamme = Gamme.STANDARD;}
   }

@@ -2,8 +2,6 @@ package principal;
 
 import java.util.ArrayList;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class Vehicule.
  */
@@ -23,26 +21,19 @@ abstract class Vehicule implements Iterable<Vehicule>{
 	 *
 	 * @param marque the marque
 	 */
-	public Vehicule(String marque) {
+	public Vehicule(String marque, Vehicules vehicules) {
 		this.marque = marque;
+		this.vehicules = vehicules;
+		this.vehicules.add(this);
 	}
 	
 	/**
-	 * Adds the.
-	 *
-	 * @param exemplaire the exemplaire
+	 * Add un exemplaire au véhicule.
+	 * @param exemplaire exemplaire à ajouter.
 	 */
 	public void add(Exemplaire exemplaire) {
-		if(exemplaires.size() == 0) { 
-			// Ajout du nouveau vehicule à la liste des vehicules et insertion d'un premier exemplaire
-			vehicules.add(this);
-			exemplaires.add(exemplaire);	
-		} else {
-			// inserer un exemplaire dans le véhicule existant
-			exemplaires.add(exemplaire);
+		exemplaires.add(exemplaire);
 		}
-	}
-
 	/**
 	 * Gets the marque.
 	 *
@@ -50,17 +41,7 @@ abstract class Vehicule implements Iterable<Vehicule>{
 	 */
 	public String getMarque() {
 		return marque;
-	}
-	
-	/**
-	 * Sets the marque.
-	 *
-	 * @param marque the new marque
-	 */
-	public void setMarque(String marque) {
-		this.marque = marque;
-	}
-	
+	}	
 	/**
 	 * Gets the exemplaires.
 	 *
@@ -69,16 +50,6 @@ abstract class Vehicule implements Iterable<Vehicule>{
 	public ArrayList<Exemplaire> getExemplaires() {
 		return exemplaires;
 	}
-	
-	/**
-	 * Sets the exemplaires.
-	 *
-	 * @param exemplaires the new exemplaires
-	 */
-	public void setExemplaires(ArrayList<Exemplaire> exemplaires) {
-		this.exemplaires = exemplaires;
-	}
-	
 	/**
 	 * Gets the vehicules.
 	 *
@@ -87,16 +58,5 @@ abstract class Vehicule implements Iterable<Vehicule>{
 	public Vehicules getVehicules() {
 		return vehicules;
 	}
-	
-	/**
-	 * Sets the vehicules.
-	 *
-	 * @param vehicules the new vehicules
-	 */
-	public void setVehicules(Vehicules vehicules) {
-		this.vehicules = vehicules;
-	}
-	
-	
-	
+		
 }

@@ -42,7 +42,6 @@ class Adresse {
 	public short getNumero() {
 		return numero;
 	}
-
 	/**
 	 * Sets the numero.
 	 *
