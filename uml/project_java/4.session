@@ -5,9 +5,10 @@ diagrams
     1097 531 109 A4 0 0
 end
 show_stereotypes
-selected class_ref 142468 // Locations
+selected attribute_ref 145924 // locations
 open
-  classdiagram_ref 128004 // Location
-  deploymentview_ref 128132 // Emprunteur
+  class_ref 128388 // Exemplaire
+  class_ref 128516 // Location
+  class_ref 128900 // Vehicule
 end
 end
