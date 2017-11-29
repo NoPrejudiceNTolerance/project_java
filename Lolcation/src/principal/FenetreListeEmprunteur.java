@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,6 +40,10 @@ public class FenetreListeEmprunteur extends JFrame{
 	private JPanel panelBoutons;
 	
 	private JList<String> listeEmprunteurs;
+	
+	private EmprunteursModel empModel;
+	private JTable table;
+	
 	private DefaultListModel<String> modele; 
 	private JButton bnAjouter;
 	private JButton bnModifier;
@@ -58,16 +64,18 @@ public class FenetreListeEmprunteur extends JFrame{
 	
 	public void build(){
 		//panel de gauche
+		table = new JTable(empModel);
+		table.setAutoCreateRowSorter(true);
+		
 		modele = new DefaultListModel<String>();
 		listeEmprunteurs = new JList<String>(modele);
 		listeEmprunteurs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listeEmprunteurs.addListSelectionListener(new ListListen());
-		modele.addElement("Louis Singer");
-		modele.addElement("Antoine Malinet");
 		panelListe = new JPanel();
 		panelListe.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
 		panelListe.setLayout(new GridLayout(1,1));
-		panelListe.add(listeEmprunteurs);
+		//panelListe.add(listeEmprunteurs);
+		panelListe.add(table);
 		
 		//panel de droite
 		bnAjouter = new JButton("Ajouter...");

@@ -10,6 +10,10 @@ public class Principale {
 	
 	private static Emprunteurs e;
 	
+	static public Emprunteurs getListeEmprunteurs() {
+		return e;
+	}
+	
 	static public void ouvrirFenetreAjout(){
 		fenAjout.activeBoutonOK(false);
 		fenAjout.setNom("");
@@ -33,7 +37,7 @@ public class Principale {
 	}
 	
 	static public void supprimerEmprunteur(int id){
-		e.getEmprunteurs().remove(index);
+		//e.getEmprunteurs().remove(index);
 	}
 	
 	public static void main(String[] args) {
