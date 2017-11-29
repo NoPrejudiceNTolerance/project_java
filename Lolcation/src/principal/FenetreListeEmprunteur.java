@@ -106,10 +106,10 @@ public class FenetreListeEmprunteur extends JFrame{
 		this.pack();
 	}
 	
-	public void ajouterElement(String element)
+	public void actualiserListe(Emprunteurs e)
 	{
-		modele.addElement(element);
-		new Emprunteur();
+		Emprunteur dernierEmp = e.getEmprunteurs().get(e.getEmprunteurs().size()-1);
+		modele.addElement(dernierEmp.getNom() + " " + dernierEmp.getPrenom());
 	}
 	
 	public void modifierElement(int index, String element)
@@ -130,6 +130,7 @@ public class FenetreListeEmprunteur extends JFrame{
 				int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment supprimer cet emprunteur ?", "Suppression", JOptionPane.YES_NO_OPTION);
 				if(reponse == JOptionPane.YES_OPTION)
 				{
+					//Principale.supprimerEmprunteur(id);//à faire
 					modele.remove(listeEmprunteurs.getSelectedIndex());
 				}
 			}

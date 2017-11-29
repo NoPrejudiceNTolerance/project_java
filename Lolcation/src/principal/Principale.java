@@ -8,6 +8,8 @@ public class Principale {
 	static private FenetreAjouterEmprunteur fenAjout;
 	//static private FenetreModifierEtu fenModif;
 	
+	private static Emprunteurs e;
+	
 	static public void ouvrirFenetreAjout(){
 		fenAjout.activeBoutonOK(false);
 		fenAjout.setNom("");
@@ -22,14 +24,21 @@ public class Principale {
 	}
 */	
 	static public void demandeAjouterEmprunteur(String nom, String prenom){
-		fenListe.ajouterElement(nom+" "+prenom);
+		new Emprunteur(nom, prenom, new Adresse((short)3, "censuree", (short)75001, "Saulxure"), e);
+		fenListe.actualiserListe(e);
 	}
 	
-	static public void modifierEtudiant(String nom, String prenom, int index){
+	static public void modifierEmprunteur(String nom, String prenom, int index){
 		fenListe.modifierElement(index, nom+" "+prenom);
 	}
 	
+	static public void supprimerEmprunteur(int id){
+		e.getEmprunteurs().remove(index);
+	}
+	
 	public static void main(String[] args) {
+		e = new Emprunteurs();
+		
 		fenListe = new FenetreListeEmprunteur();
 		fenAjout = new FenetreAjouterEmprunteur();
 		//fenModif = new FenetreModifierEtu();
