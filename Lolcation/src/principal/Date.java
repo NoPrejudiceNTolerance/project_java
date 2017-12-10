@@ -7,7 +7,9 @@ package principal;
  */
 class Date {
   
-  /** The jour. */
+
+
+/** The jour. */
   private short jour;
 
   /** The mois. */
@@ -30,7 +32,11 @@ class Date {
 	this.annee = annee;
   }
 
-  /**
+  public Date(int i, int j, int k) {
+	this((short)i, (short)j, (short)k);
+}
+
+/**
    * Retourne la durée total en jour de this à dateFin
    * @param dateFin date de fin
    * @return
@@ -98,6 +104,11 @@ class Date {
   public void setAnnee(short annee) {
 	this.annee = annee;
   }
+  
+  @Override
+	public String toString() {
+		return jour + "/" + mois + "/" + annee;
+	}
 
   
 }

@@ -40,6 +40,8 @@ class Location implements Iterable<Exemplaire>{
 	/** true si Assurance souscrite, false sinon */
 	private boolean assurance;
 	
+	private Statue statue;
+	
 	/**
 	 * Instantiates a new location.
 	 *
@@ -59,7 +61,15 @@ class Location implements Iterable<Exemplaire>{
 		this.locations = locations;
 		this.locations.add(this);
 		this.assurance = assurance;
-		this.devis = new Devis();
+		this.devis = new Devis(this);
+		this.devis.generateDevis();
+		this.statue = Statue.EN_COURS;
+	}
+	
+	public void rendre(Date dateRendu) {
+		this.rendu = dateRendu;
+		this.facture = new Facture(this.fin, this.rendu, this.devis.getDocumentDevis(), this.numero);
+		this.statue = Statue.RENDU;
 	}
 	
 	
@@ -119,25 +129,13 @@ class Location implements Iterable<Exemplaire>{
 
 	/**
 	 * Gets the rendu.
-	 *
 	 * @return the rendu
 	 */
 	public Date getRendu() {
 		return rendu;
 	}
-	
-	/**
-	 * Sets the rendu.
-	 *
-	 * @param rendu the new rendu
-	 */
-	public void setRendu(Date rendu) {
-		this.rendu = rendu;
-	}
-
 	/**
 	 * Gets the emprunteur.
-	 *
 	 * @return the emprunteur
 	 */
 	public Emprunteur getEmprunteur() {
@@ -146,7 +144,6 @@ class Location implements Iterable<Exemplaire>{
 	
 	/**
 	 * Sets the emprunteur.
-	 *
 	 * @param emprunteur the new emprunteur
 	 */
 	public void setEmprunteur(Emprunteur emprunteur) {
@@ -155,7 +152,6 @@ class Location implements Iterable<Exemplaire>{
 
 	/**
 	 * Gets the exemplaire.
-	 *
 	 * @return the exemplaire
 	 */
 	public List<Exemplaire> getExemplaire() {
@@ -163,33 +159,12 @@ class Location implements Iterable<Exemplaire>{
 	}
 	
 	/**
-	 * Sets the exemplaire.
-	 *
-	 * @param exemplaires the new exemplaire
-	 */
-	//a modifier probablement
-	public void setExemplaire(ArrayList<Exemplaire> exemplaires) {
-		this.exemplaires = exemplaires;
-	}
-
-	/**
 	 * Gets the devis.
-	 *
 	 * @return the devis
 	 */
 	public Devis getDevis() {
 		return devis;
 	}
-	
-	/**
-	 * Sets the devis.
-	 *
-	 * @param devis the new devis
-	 */
-	public void setDevis(Devis devis) {
-		this.devis = devis;
-	}
-
 	/**
 	 * Gets the facture.
 	 *
@@ -198,16 +173,6 @@ class Location implements Iterable<Exemplaire>{
 	public Facture getFacture() {
 		return facture;
 	}
-	
-	/**
-	 * Sets the facture.
-	 *
-	 * @param facture the new facture
-	 */
-	public void setFacture(Facture facture) {
-		this.facture = facture;
-	}
-	
 	/**
 	 * Gets the locations.
 	 *
@@ -217,42 +182,34 @@ class Location implements Iterable<Exemplaire>{
 		return locations;
 	}
 	
-	/**
-	 * Ajouter exemplaire.
-	 *
-	 * @param exemplaire the exemplaire
-	 */
-	public void ajouterExemplaire(Exemplaire exemplaire) {
-		this.exemplaires.add(exemplaire);
-	}
-	
-	/**
-	 * Supprimer exemplaire.
-	 *
-	 * @param exemplaire the exemplaire
-	 */
-	public void supprimerExemplaire(Exemplaire exemplaire) {
-		this.exemplaires.remove(exemplaire);
-	}
-	
-	/**
-	 * Devis.
-	 */
-	public void devis() {
-		
-	}
-	
-	/**
-	 * Facture.
-	 */
-	public void facture() {
-		
-	}
-
-
 	@Override
 	public Iterator<Exemplaire> iterator() {
 		return exemplaires.iterator();
 	}
+
+	/**
+	 * gets si il y a une assurance
+	 * @return assurance
+	 */
+	public boolean getAssurance() {
+		return assurance;
+	}
 	
+	public Statue getStatue() {
+		return statue;
+	}
+
+	public void setStatue(Statue statue) {
+		this.statue = statue;
+	}
+
+	public enum Statue { 
+		  
+	  	/** quand la location est en cours */
+	  	EN_COURS,
+		  
+	  	/** quand la location est rendu */
+	  	RENDU;
+	}
+
 }

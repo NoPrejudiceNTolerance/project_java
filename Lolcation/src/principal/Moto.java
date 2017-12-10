@@ -8,6 +8,8 @@ import java.util.Iterator;
  */
 class Moto extends Vehicule {
 	
+	private static final int PRIX_LOCATION = 11; 
+	
 	/** The cylindree. */
 	private String cylindree;
 
@@ -41,7 +43,12 @@ class Moto extends Vehicule {
 
 	@Override
 	public String toString() {
-		return "Moto [cylindree=" + cylindree + "]";
+		return super.toString() + cylindree;
+	}
+
+	@Override
+	public int prixParJour() {
+		return super.getPrixSuppAlea() + Moto.PRIX_LOCATION;
 	}
 	
 	

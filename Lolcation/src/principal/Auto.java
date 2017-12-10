@@ -9,6 +9,9 @@ import java.util.Iterator;
 */
 class Auto extends Vehicule {
   
+	private static final int PRIX_LOCATION = 12; 
+	private static final int SUPP_LUXE = 8; 
+	
   /** The modele. */
   private String modele;
   
@@ -46,6 +49,7 @@ class Auto extends Vehicule {
 	return modele;
 	}
 
+
   	/* (non-Javadoc)
 	   * @see java.lang.Iterable#iterator()
 	   */
@@ -66,9 +70,15 @@ class Auto extends Vehicule {
   	/** The luxe. */
   	LUXE;
 }
+  @Override
+	public String toString() {
+		return super.toString() + modele;
+	}
+
 @Override
-public String toString() {
-	return "Auto [modele=" + modele + ", gamme=" + gamme + "]";
+public int prixParJour() {
+	int prix = super.getPrixSuppAlea() + Auto.PRIX_LOCATION;
+	if(this.gamme == Gamme.LUXE) {return prix + Auto.SUPP_LUXE;} else {return prix;}
 }
   
 }

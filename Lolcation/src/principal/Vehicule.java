@@ -16,6 +16,7 @@ abstract class Vehicule implements Iterable<Exemplaire>{
 	/** The vehicules. */
 	private Vehicules vehicules;
 	
+	private int prixSuppAlea;
 	/**
 	 * Instantiates a new vehicule.
 	 *
@@ -26,6 +27,7 @@ abstract class Vehicule implements Iterable<Exemplaire>{
 		this.vehicules = vehicules;
 		this.vehicules.add(this);
 		this.exemplaires = new ArrayList<Exemplaire>();
+		this.setPrixSuppAlea((int) (Math.random() * 10));
 	}
 	
 	/**
@@ -59,10 +61,20 @@ abstract class Vehicule implements Iterable<Exemplaire>{
 	public Vehicules getVehicules() {
 		return vehicules;
 	}
+	
+	public abstract int prixParJour();
 
 	@Override
 	public String toString() {
-		return "Vehicule [marque=" + marque + ", exemplaires=" + exemplaires + ", vehicules=" + vehicules + "]";
+		return marque + " ";
+	}
+
+	public int getPrixSuppAlea() {
+		return prixSuppAlea;
+	}
+
+	public void setPrixSuppAlea(int prixSuppAlea) {
+		this.prixSuppAlea = prixSuppAlea;
 	}
 	
 		
