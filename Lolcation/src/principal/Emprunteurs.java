@@ -27,7 +27,7 @@ class Emprunteurs implements Iterable<Emprunteur> {
   /**
    * Inserer emprunteur
 
-   * @param emprunteur l'emprunteur à ajouter à la liste
+   * @param emprunteur l'emprunteur ï¿½ ajouter ï¿½ la liste
    * @return true si ok false sinon
    */
   public boolean addEmprunteur(Emprunteur emprunteur) {
@@ -35,11 +35,20 @@ class Emprunteurs implements Iterable<Emprunteur> {
   }
   /**
    * Supprimer emprunteur
-	 @param emprunteur Emprunteur à supprimer de la liste
+	 @param emprunteur Emprunteur ï¿½ supprimer de la liste
 	 @return true si ok false sinon
    */
   public boolean  supprimerEmprunteur(Emprunteur emprunteur) {
 	  return emprunteurs.remove(emprunteur);
+  }
+  
+  public boolean  supprimerEmprunteur(int id) {
+	  for(Emprunteur e : this) {
+		  if(e.getId() == id) {
+			  return this.supprimerEmprunteur(e);
+		  }
+	  }
+	  return false;
   }
 
   /**
