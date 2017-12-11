@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -64,6 +65,7 @@ public class FenetreListeEmprunteur extends JFrame{
 	
 	public void build(){
 		//panel de gauche
+		empModel = new EmprunteursModel();
 		table = new JTable(empModel);
 		table.setAutoCreateRowSorter(true);
 		
@@ -75,7 +77,7 @@ public class FenetreListeEmprunteur extends JFrame{
 		panelListe.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
 		panelListe.setLayout(new GridLayout(1,1));
 		//panelListe.add(listeEmprunteurs);
-		panelListe.add(table);
+		panelListe.add(new JScrollPane(table));
 		
 		//panel de droite
 		bnAjouter = new JButton("Ajouter...");

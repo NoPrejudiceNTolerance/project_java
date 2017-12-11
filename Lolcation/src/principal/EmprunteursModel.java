@@ -17,11 +17,12 @@ public class EmprunteursModel extends AbstractTableModel {
 
 	private List<Emprunteur> emprunteurs;
 	
-	public EmprunteursModel(Emprunteurs e) {
+	public EmprunteursModel() {
 		super();
 		emprunteurs = Principale.getListeEmprunteurs().getEmprunteurs();
 		//noteService = NoteService.getInstance();
 		//notes = noteService.findLastNotes();
+		
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class EmprunteursModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return notes.size();
+		return emprunteurs.size();
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class EmprunteursModel extends AbstractTableModel {
 
 		case 1:
 			// Prenom
-			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getPrenom()();
+			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getPrenom();
 
 		case 2:
 			// Annee
@@ -59,9 +60,6 @@ public class EmprunteursModel extends AbstractTableModel {
 			// Sexe
 			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getAdresse();
 
-		case 4:
-			// Note au controle
-			return notes.get(rowIndex).getNote();
 
 		default:
 			throw new IllegalArgumentException();
@@ -73,24 +71,24 @@ public class EmprunteursModel extends AbstractTableModel {
 		switch (columnIndex) {
 
 		case 0:
+			return String.class;
 		case 1:
 			return String.class;
 
 		case 3:
-			return Sexe.class;
+			return String.class;
 
 		case 2:
-			return Integer.class;
-
-		case 4:
-			return Double.class;
+			return String.class;
 
 		default:
 			return Object.class;
 		}
 	}
-
-	public List<NoteEleve> getNotes() {
-		return notes;
-	}
+	
+	public void supprEmprunteur(int rowIndex) {
+        Principale.getListeEmprunteurs().supprimerEmprunteur(emprunteur);
+ 
+        fireTableRowsDeleted(rowIndex, rowIndex);
+    }
 }
