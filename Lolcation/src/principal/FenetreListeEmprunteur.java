@@ -40,12 +40,9 @@ public class FenetreListeEmprunteur extends JFrame{
 	private JPanel panelListe;
 	private JPanel panelBoutons;
 	
-	private JList<String> listeEmprunteurs;
-	
 	private EmprunteursModel empModel;
 	private JTable table;
 	
-	private DefaultListModel<String> modele; 
 	private JButton bnAjouter;
 	private JButton bnModifier;
 	private JButton bnSupprimer;
@@ -57,7 +54,7 @@ public class FenetreListeEmprunteur extends JFrame{
 	public FenetreListeEmprunteur(){
 		this.setTitle("Liste des emprunteurs");
 		this.setResizable(true);
-		this.setMinimumSize(new Dimension(400, 400));
+		this.setMinimumSize(new Dimension(600, 600));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.build();
@@ -69,14 +66,11 @@ public class FenetreListeEmprunteur extends JFrame{
 		table = new JTable(empModel);
 		table.setAutoCreateRowSorter(true);
 		
-		modele = new DefaultListModel<String>();
-		listeEmprunteurs = new JList<String>(modele);
-		listeEmprunteurs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listeEmprunteurs.addListSelectionListener(new ListListen());
+		//listeEmprunteurs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		//listeEmprunteurs.addListSelectionListener(new ListListen());
 		panelListe = new JPanel();
 		panelListe.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
 		panelListe.setLayout(new GridLayout(1,1));
-		//panelListe.add(listeEmprunteurs);
 		panelListe.add(new JScrollPane(table));
 		
 		//panel de droite
@@ -116,11 +110,18 @@ public class FenetreListeEmprunteur extends JFrame{
 		this.pack();
 	}
 	
+	//a suppr
 	public void actualiserListe(Emprunteurs e)
 	{
 		Emprunteur dernierEmp = e.getEmprunteurs().get(e.getEmprunteurs().size()-1);
-		modele.addElement(dernierEmp.getNom() + " " + dernierEmp.getPrenom());
+		//modele.addElement(dernierEmp.getNom() + " " + dernierEmp.getPrenom());
 	}
+	
+	public void ajouterEmprunteur() {
+		empModel.ajoutEmprunteur();
+	}
+	
+	public void supprimerEmprunteur();
 	
 	public void modifierElement(int index, String element)
 	{
@@ -141,7 +142,7 @@ public class FenetreListeEmprunteur extends JFrame{
 				if(reponse == JOptionPane.YES_OPTION)
 				{
 					//Principale.supprimerEmprunteur(id);//à faire
-					modele.remove(listeEmprunteurs.getSelectedIndex());
+					//modele.remove(listeEmprunteurs.getSelectedIndex());
 				}
 			}
 			if(e.getSource() == bnAjouter)

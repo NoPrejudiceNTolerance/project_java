@@ -27,9 +27,9 @@ public class Principale {
 		fenModif.setVisible(true);
 	}
 */	
-	static public void demandeAjouterEmprunteur(String nom, String prenom){
-		new Emprunteur(nom, prenom, new Adresse((short)3, "censuree", (short)75001, "Saulxure"), e);
-		fenListe.actualiserListe(e);
+	static public void demandeAjouterEmprunteur(String nom, String prenom, short numero, String rue, int cp, String ville){
+		new Emprunteur(nom, prenom, new Adresse(numero, rue, cp, ville), e);
+		fenListe.ajouterEmprunteur();
 	}
 	
 	static public void modifierEmprunteur(String nom, String prenom, int index){
@@ -37,7 +37,8 @@ public class Principale {
 	}
 	
 	static public void supprimerEmprunteur(int id){
-		//e.getEmprunteurs().remove(index);
+		e.supprimerEmprunteur(id);
+		fenListe.supprimerEmprunteur();
 	}
 	
 	public static void main(String[] args) {

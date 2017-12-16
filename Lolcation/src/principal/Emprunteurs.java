@@ -42,6 +42,7 @@ class Emprunteurs implements Iterable<Emprunteur> {
 	  return emprunteurs.remove(emprunteur);
   }
   
+  //suppr peut-etre
   public boolean  supprimerEmprunteur(int id) {
 	  for(Emprunteur e : this) {
 		  if(e.getId() == id) {

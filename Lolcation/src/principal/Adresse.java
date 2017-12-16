@@ -1,7 +1,7 @@
 package principal;
 // TODO: Auto-generated Javadoc
 /**
- * Modélisation d'une adresse.
+ * Modï¿½lisation d'une adresse.
  * @author PC-Louis
  * 
  */
@@ -14,7 +14,7 @@ class Adresse {
 	private String rue;
 
 	/** The cp. */
-	private short cp;
+	private int cp;
 
 	/** The ville. */
 	private String ville;
@@ -27,7 +27,7 @@ class Adresse {
 	 * @param cp the cp
 	 * @param ville the ville
 	 */
-	public Adresse(short numero, String rue, short cp, String ville) {
+	public Adresse(short numero, String rue, int cp, String ville) {
 		this.numero = numero;
 		this.rue = rue;
 		this.cp = cp;
@@ -74,7 +74,7 @@ class Adresse {
 	 *
 	 * @return the cp
 	 */
-	public short getCp() {
+	public int getCp() {
 		return cp;
 	}
 
@@ -83,7 +83,7 @@ class Adresse {
 	 *
 	 * @param cp the new cp
 	 */
-	public void setCp(short cp) {
+	public void setCp(int cp) {
 		this.cp = cp;
 	}
 
@@ -103,6 +103,11 @@ class Adresse {
 	 */
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+
+	@Override
+	public String toString() {
+		return numero + " " + rue + ", " + ville;
 	}
 	
 	

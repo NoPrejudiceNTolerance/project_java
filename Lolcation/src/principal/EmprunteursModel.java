@@ -11,7 +11,7 @@ public class EmprunteursModel extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private final String[] entetes = { "ID", "Prénom", "Nom", "Adresse" };
+	private final String[] entetes = { "ID", "Prénom", "Nom", "Adresse", "CP" };
 
 	//private NoteService noteService;
 
@@ -45,20 +45,19 @@ public class EmprunteursModel extends AbstractTableModel {
 		switch (columnIndex) {
 
 		case 0:
-			// Nom
-			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getId();
+			return String.valueOf(Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getId());
 
 		case 1:
-			// Prenom
 			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getPrenom();
 
 		case 2:
-			// Annee
 			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getNom();
 
 		case 3:
-			// Sexe
-			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getAdresse();
+			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getAdresse().toString();
+		
+		case 4:
+			return Principale.getListeEmprunteurs().getEmprunteurs().get(rowIndex).getAdresse().getCp();
 
 
 		default:
@@ -72,22 +71,31 @@ public class EmprunteursModel extends AbstractTableModel {
 
 		case 0:
 			return String.class;
+			
 		case 1:
-			return String.class;
-
-		case 3:
 			return String.class;
 
 		case 2:
 			return String.class;
+
+		case 3:
+			return String.class;
+			
+		case 4:
+			return int.class;
 
 		default:
 			return Object.class;
 		}
 	}
 	
+	public void ajoutEmprunteur() {
+		fireTableRowsInserted(emprunteurs.size() -1, emprunteurs.size() -1);
+	}
+	
 	public void supprEmprunteur(int rowIndex) {
-        Principale.getListeEmprunteurs().supprimerEmprunteur(emprunteur);
+        //Principale.getListeEmprunteurs().supprimerEmprunteur(emprunteur);
+		//emprunteurs.remove(rowIndex);
  
         fireTableRowsDeleted(rowIndex, rowIndex);
     }
