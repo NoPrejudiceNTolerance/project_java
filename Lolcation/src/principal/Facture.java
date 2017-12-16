@@ -22,10 +22,15 @@ class Facture {
 	/** The retard. */
 	private int retard;
 	
-	private Date dateRetourDevis;
+	private int suppEtat;
+	
+	private int suppEssence;
+	
 	private Date dateRetourReelle;
 	/** La location facturée */
-	private Document devis;
+	private Document facture;
+	
+	private Paragraph pDevis;
 	
 	private final String chemin;
 	
@@ -33,35 +38,46 @@ class Facture {
 	 * Instantiates a new facture.
 	 * @param retard the retard
 	 */
-	public Facture(Date dateRetourDevis, Date dateRetourReelle, Document devis, int numeroLocation) {
-		this.dateRetourDevis = dateRetourDevis;
-		this.dateRetourReelle = dateRetourReelle;
-		this.devis = devis;
-		this.chemin = "D:\\Programs\\GitHub\\Java_project\\project_java\\PDF\\Factures\\Facture"+numeroLocation+".pdf";
-		this.retard = dateRetourDevis.dureeTo(dateRetourReelle);
+	public Facture(int retard, int supplementEtat, int supplementPlein, Paragraph paragraphDevis, short numero) {
+		this.retard = retard;
+		this.suppEssence = supplementPlein;
+		this.suppEtat = supplementEtat;
+		this.pDevis = paragraphDevis;
+		this.chemin = "D:\\Programs\\GitHub\\Java_project\\project_java\\PDF\\Facture\\Facture"+numero+".pdf";
 		this.generateFacture();
 	}
-	
+
+	/**
+	 * Genere la facture en PDF.
+	 * @return true 
+	 */
 	public boolean generateFacture() {
 		System.out.println("Génération de la facture");
 		try
 		{
+			this.facture = new Document();
+			PdfWriter.getInstance(facture, new FileOutputStream(chemin));
+			facture.open();
 			
-			PdfWriter.getInstance(devis, new FileOutputStream(chemin));
-			devis.open();
+			//On ajoute le paragraph du devis histoire de rappeller les sommes etc...
+			facture.add(pDevis);
+			
+			//Puis on ajoute les éléments relatifs au rendu des exemplaires
 			Paragraph p = new Paragraph();
 			p.add("\nA cela s'ajoute un montant de " + Facture.PRIX_JOUR_RETARD*this.retard + "€ suite aux " + this.retard + " jours de retard." );
-			devis.add(p);
+			facture.add(p);
 			
 		} catch (DocumentException de) {
 			de.printStackTrace();
+			facture.close();
 			return false;
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
+			facture.close();
 			return false;
 		}
 		
-		devis.close();
+		facture.close();
 		return true;
 	}
 	

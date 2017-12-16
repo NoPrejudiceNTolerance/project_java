@@ -1,29 +1,35 @@
-[iText][itext] consists of several jars.
+iText consists of several jars.
 
-The iText 7 Core/Community release contains:
-- ```kernel-x.y.z.jar```: low-level functionality
-- ```io-x.y.z.jar```:  low-level functionality
-- ```layout-x.y.z.jar```: high-level functionality
-- ```forms-x.y.z.jar```: AcroForms
-- ```pdfa-x.y.z.jar```: PDF/A-specific functionality
-- ```pdftest-x.y.z.jar```: test helper classes
-- ```barcode-x.y.z.jar```: use this if you want to create bar codes
-- ```hyph-x.y.z.jar```: use this if you want text to be hyphenated
-- ```font-asian-x.y.z.jar```: use this is you need CJK functionality (Chinese / Japanese / Korean)
-- ```sign-x.y.z.jar```: use this if you need support for digital signatures
+The main iText release contains:
+- ```itextpdf-x.y.z.jar```: the core library
+- ```itext-xtra-x.y.z.jar```: extra functionality (PDF 2!)
+- ```itext-pdfa-x.y.z.jar```: PDF/A-related functionality
 
-The iText 7 Community source code is hosted on [Github][github], where you can also [download the latest releases][latest].
+This project is hosted on https://github.com/itext
 
-You can also [build iText 7 Community from source][building].
+You can find the latest releases here:
+- https://github.com/itext/itextpdf
+- https://github.com/itext/xtra
+- https://github.com/itext/pdfa
 
-We also have a tool that can help you debug PDFs:
+You can also [build iText from source][building].
+
+In some cases, you'll need [extra jars][extrajars].
+These jars are bundled in a zip file here:
+http://sourceforge.net/projects/itext/files/extrajars/
+
+For XML (and HTML) functionality, you need this jar:
+- ```xmlworker-x.y.z.jar```
+This project is hosted on https://github.com/itext/xmlworker
+
+Finally, we also have a tool that can help you debug PDFs:
 - ```itext-rups-x.y.z.jar```
-RUPS is also hosted on [Github][github-rups]
+This project is hosted on https://github.com/itext/rups
 
 If you have an idea on how to improve iText and you want to submit code,
 please read our [Contribution Guidelines][contributing].
 
-iText is dual licensed as [AGPL][agpl]/Commercial software.
+iText is licensed as [AGPL][agpl] software.
 
 AGPL is a free / open source software license.
 
@@ -37,14 +43,9 @@ These activities include:
 - serving PDFs on the fly in the cloud or in a web application
 - shipping iText with a closed source product
 
-Contact [sales] for more info.
+Contact sales for more info: http://itextpdf.com/sales
 
 [agpl]: LICENSE.md
 [building]: BUILDING.md
 [contributing]: CONTRIBUTING.md
 [extrajars]: EXTRAJARS.md
-[itext]: http://itextpdf.com/
-[github]: https://github.com/itext/itext7
-[latest]: https://github.com/itext/itext7/releases/latest
-[github-rups]: http://github.com/itext/rups
-[sales]: http://itextpdf.com/sales

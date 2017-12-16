@@ -34,6 +34,8 @@ class Devis {
   
   /** Le document (sert a la génération du PDF) du devis */
   private Document documentDevis;
+  
+  private Paragraph pDevis;
   /**
    * Instantiates a new devis.
    *
@@ -49,7 +51,6 @@ class Devis {
 		this.prixLocationParJour += e.getVehicule().prixParJour();
 	}
 	this.prix = calculPrix();
-	this.documentDevis = new Document();
 	this.generateDevis();
   }
   /**
@@ -88,7 +89,7 @@ class Devis {
 		System.out.println("Génération du devis");
 		try
 		{
-			
+			this.documentDevis = new Document();
 			PdfWriter.getInstance(documentDevis, new FileOutputStream(chemin));
 			documentDevis.open();
 			
@@ -124,13 +125,16 @@ class Devis {
 			
 			
 			p.add(tableau);
+			this.pDevis = p;
 			documentDevis.add(p);
 			
 		} catch (DocumentException de) {
 			de.printStackTrace();
+			documentDevis.close();
 			return false;
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
+			documentDevis.close();
 			return false;
 		}
 		
@@ -146,6 +150,10 @@ class Devis {
 	public Document getDocumentDevis() {
 		return this.documentDevis;
 	}
+	public Paragraph getpDevis() {
+		return pDevis;
+	}
+	
 }
 
  

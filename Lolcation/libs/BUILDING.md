@@ -1,35 +1,18 @@
-To build iText 7, [Maven][1] must be installed.
+To build iText, Maven must be installed: http://maven.apache.org/
 
-Running install without a profile will generate the iText 7 jars:
-```bash
-$ mvn clean install \
-    -Dmaven.test.skip=true \
-    -Dmaven.javadoc.failOnError=false \
-    > >(tee mvn.log) 2> >(tee mvn-error.log >&2)
-```
+Running install without a profile will generate the itextpdf jar:
 
-To run the tests, [Ghostscript][2] and [Imagemagick][3] must be installed.
-```bash
-$ mvn clean install \
-    -Dmaven.test.failure.ignore=false \
-    -DgsExec=$(which gs) \
-    -DcompareExec=$(which compare) \
-    -Dmaven.javadoc.failOnError=false \
-    > >(tee mvn.log) 2> >(tee mvn-error.log >&2)
-```
+```mvn install```
 
-You can use the supplied `Vagrantfile` to get a [Vagrant][4] VM ([Ubuntu][5] 14.04 LTS - Trusty Tahr, with [VirtualBox][6]) with all the required software installed.
-```bash
-$ vagrant box add ubuntu/trusty64
-$ vagrant up
-$ vagrant ssh -- \
-    'cd /vagrant ; mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.failOnError=false' \
-    > >(tee mvn.log) 2> >(tee mvn-error.log >&2)
-```
+When using the profile 'all' also the source and javadoc jars will be generated:
 
-[1]: http://maven.apache.org/
-[2]: http://www.ghostscript.com/
-[3]: http://www.imagemagick.org/
-[4]: https://www.vagrantup.com/
-[5]: http://www.ubuntu.com/
-[6]: https://www.virtualbox.org/
+```mvn install -P all```
+
+If you are in need of the asian font jars, you can run one of the following commands:
+
+```mvn clean install -f itext-asian.pom```    
+```mvn clean install -f itext-asiancmaps.pom```
+
+If you need the hyphenation jar, execute:
+
+```mvn clean install -f itext-hyph-xml.pom```

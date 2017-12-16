@@ -1,6 +1,6 @@
 package principal;
 
-import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -8,6 +8,8 @@ import java.util.List;
  * The Class Location.
  */
 class Location implements Iterable<Exemplaire>{
+	
+	/** Variable static dont le but est de determiner le numero de la location. */
 	private static short current_numero = 0;
 	
 	/** The numero. */
@@ -40,7 +42,16 @@ class Location implements Iterable<Exemplaire>{
 	/** true si Assurance souscrite, false sinon */
 	private boolean assurance;
 	
+	/** Le statue de la location (énumération) */
 	private Statue statue;
+	
+	/** supplément lié à l'état de dégradation du véhicule. */
+	private int supplementEtat;
+	
+	/** supplément lié a la consommation d'essence. */
+	private int supplementPlein;
+	
+	private int retard;
 	
 	/**
 	 * Instantiates a new location.
@@ -61,17 +72,51 @@ class Location implements Iterable<Exemplaire>{
 		this.locations = locations;
 		this.locations.add(this);
 		this.assurance = assurance;
+		this.supplementEtat = 0;
+		this.supplementPlein = 0;
+		this.retard = 0;
 		this.devis = new Devis(this);
 		this.devis.generateDevis();
 		this.statue = Statue.EN_COURS;
 	}
 	
-	public void rendre(Date dateRendu) {
-		this.rendu = dateRendu;
-		this.facture = new Facture(this.fin, this.rendu, this.devis.getDocumentDevis(), this.numero);
-		this.statue = Statue.RENDU;
+	/**
+	 * Rendre les véhicules loués.
+	 * @param dateRendu date de rendu
+	 */
+	public void rendre(Date dateRendu, List<Plein> listeDesReservoirs, List<Etat> listeDesEtats) {
+		if(this.statue == Statue.EN_COURS) {
+			this.retard = fin.dureeTo(dateRendu);
+			this.rendu = dateRendu;
+			renduExemplaires(listeDesReservoirs, listeDesEtats);
+			this.facture = new Facture(retard, supplementEtat, supplementPlein, this.devis.getpDevis(), this.numero);
+			
+			this.statue = Statue.RENDU;
+		}
 	}
 	
+	/**
+	 * Fonction privée permettant de calculer les supplements.
+	 * @param listeDesReservoirs
+	 * @param listeDesEtats
+	 */
+	private void renduExemplaires(List<Plein> listeDesReservoirs, List<Etat> listeDesEtats) {
+		Iterator<Plein> i_P = listeDesReservoirs.iterator();
+		Iterator<Etat> i_E = listeDesEtats.iterator();
+		Plein niveau_plein = exemplaires.get(0).getNiveauPlein();
+		Etat new_etat = exemplaires.get(0).getEtatExemplaire();
+		
+		for(Exemplaire e:this) {
+			
+			if(i_P.hasNext()) {niveau_plein = i_P.next();} else {niveau_plein = e.getNiveauPlein();}
+			this.supplementPlein += (e.getNiveauPlein().getPourcentage() - niveau_plein.getPourcentage())*2/10;
+			e.setNiveauPlein(niveau_plein);
+			
+			if(i_E.hasNext()) {new_etat = i_E.next();} else {new_etat = e.getEtatExemplaire();}
+			this.supplementEtat  += (e.getEtatExemplaire().getValeurEtat() - new_etat.getValeurEtat())*5;
+			e.setEtatExemplaire(new_etat);
+		}
+	}
 	
 	/**
 	 * Gets the numero.
@@ -111,7 +156,6 @@ class Location implements Iterable<Exemplaire>{
 
 	/**
 	 * Gets the fin.
-	 *
 	 * @return the fin
 	 */
 	public Date getFin() {

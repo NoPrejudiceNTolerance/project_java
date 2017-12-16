@@ -17,9 +17,14 @@ class Exemplaire {
   /** The vehicule. */
   private Vehicule vehicule;
   
+  /** Etat de l'exemplaire. */
+  private Etat etatExemplaire;
+  
+  /** Niveau de plein. */
+  private Plein niveauPlein;
+  
   /**
    * Instantiates a new exemplaire.
-   *
    * @param vehicule the vehicule
    * @param kilometres the kilometres
    * @param flotte the flotte
@@ -28,21 +33,21 @@ class Exemplaire {
 	this.kilometres = kilometres;
 	this.flotte = flotte;
 	this.vehicule = vehicule;
+	this.etatExemplaire = Etat.EXCELLENT;
+	this.setNiveauPlein(Plein.FULL);
 	this.add();
   }
   
   /**
-   * Adds the.
+   * Ajout de l'exemplaire dans deux conteneurs : d'abord dans la liste des exemplaires du véhicule puis dans la flotte.
    */
   private void add() {
-	  //Ajout de l'exemplaire
 	 flotte.add(this);
 	 vehicule.add(this);
   }
 
   /**
    * Gets the numero.
-   *
    * @return the numero
    */
   public short getNumero() {
@@ -51,7 +56,6 @@ class Exemplaire {
 
   /**
    * Sets the numero.
-   *
    * @param numero the new numero
    */
   public void setNumero(short numero) {
@@ -60,7 +64,6 @@ class Exemplaire {
 
   /**
    * Gets the kilometres.
-   *
    * @return the kilometres
    */
   public int getKilometres() {
@@ -69,7 +72,6 @@ class Exemplaire {
 
   /**
    * Sets the kilometres.
-   *
    * @param kilometres the new kilometres
    */
   public void setKilometres(int kilometres) {
@@ -78,7 +80,6 @@ class Exemplaire {
 
   /**
    * Gets the flotte.
-   *
    * @return the flotte
    */
   public Flotte getFlotte() {
@@ -87,7 +88,6 @@ class Exemplaire {
 
   /**
    * Gets the vehicule.
-   *
    * @return the vehicule
    */
   public Vehicule getVehicule() {
@@ -100,6 +100,22 @@ public String toString() {
 			+ vehicule + "]";
 }
 
-  
+public Etat getEtatExemplaire() {
+	return etatExemplaire;
+}
+
+public void setEtatExemplaire(Etat etatExemplaire) {
+	this.etatExemplaire = etatExemplaire;
+}
+
+public Plein getNiveauPlein() {
+	return niveauPlein;
+}
+
+public void setNiveauPlein(Plein niveauPlein) {
+	this.niveauPlein = niveauPlein;
+}
+
+
 }
 

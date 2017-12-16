@@ -54,7 +54,7 @@ class Emprunteur {
    * @see Location
    */
   public void louer(Date debutLoc, Date finLoc, ArrayList<Exemplaire> exemplairesLoc, boolean assurance) {
-	  new Location(debutLoc, finLoc, this, exemplairesLoc, assurance, Test.getLocations());
+	  new Location(debutLoc, finLoc, this, exemplairesLoc, assurance, App.getLocations());
   }
 
   /**
