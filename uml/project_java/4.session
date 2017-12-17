@@ -1,8 +1,8 @@
-window_sizes 1440 750 337 1097 531 167
+window_sizes 1440 750 197 1237 647 51
 cleanlooks_style
 diagrams
   active  classdiagram_ref 128004 // Location
-    1097 531 109 A4 0 0
+    1234 645 136 A4 0 0
 end
 show_stereotypes
 selected attribute_ref 145924 // locations

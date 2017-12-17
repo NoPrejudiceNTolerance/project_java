@@ -1,6 +1,6 @@
 format 214
 "project_java"
-  revision 5
+  revision 6
   modified_by 4 "Antoine"
   java_root_dir "/Users/Antoine/Documents/workspace/project_java/uml/"
 
@@ -206,6 +206,18 @@ ${members}}
 	mysql_decl ""
 	MysqlColumn
       end
+
+      classrelation 145412 // <composition>
+	relation 143236 *---
+	  a role_name "" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 145412 // <composition>
+	  b role_name "" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 145540 // <composition>
+      end
     end
 
     class 128132 "Adresse"
@@ -274,6 +286,10 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      classrelation 145540 // <composition>
+	relation_ref 143236 // <composition>
       end
     end
 
@@ -1102,7 +1118,6 @@ ${members}}
 	    classrelation_ref 138884 // <composition>
       end
     end
-
   end
 
   deploymentview 128132 "Emprunteur"

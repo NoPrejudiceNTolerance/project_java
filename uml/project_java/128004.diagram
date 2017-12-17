@@ -2,59 +2,59 @@ format 214
 
 classcanvas 128004 class_ref 128004 // Emprunteur
   classdiagramsettings member_max_width 0 end
-  xyz 316.31 18.9236 2000
+  xyz 315.17 18.2009 2000
 end
 classcanvas 128260 class_ref 128260 // Emprunteurs
   classdiagramsettings member_max_width 0 end
-  xyz 461.218 17.976 2000
+  xyz 461.591 17.3952 2000
 end
 classcanvas 128388 class_ref 128388 // Exemplaire
   classdiagramsettings member_max_width 0 end
-  xyz 329.364 212.316 2000
+  xyz 329.024 212.681 2000
 end
 classcanvas 128516 class_ref 128516 // Location
   classdiagramsettings member_max_width 0 end
-  xyz 447.195 102.625 2000
+  xyz 447.03 102.235 2000
 end
 classcanvas 128644 class_ref 128644 // Date
   classdiagramsettings member_max_width 0 end
-  xyz 584.394 185.37 2000
+  xyz 584.352 185.891 2000
 end
 classcanvas 128772 class_ref 128772 // Flotte
   classdiagramsettings member_max_width 0 end
-  xyz 305.645 327.412 2000
+  xyz 305.305 327.004 2000
 end
 classcanvas 128900 class_ref 128900 // Vehicule
   classdiagramsettings member_max_width 0 end
-  xyz 221.753 214.759 2000
+  xyz 221.372 214.871 2000
 end
 classcanvas 129028 class_ref 129028 // Moto
   classdiagramsettings member_max_width 0 end
-  xyz 168.548 295.293 2000
+  xyz 167.36 308.533 2000
 end
 classcanvas 129156 class_ref 129156 // Auto
   classdiagramsettings member_max_width 0 end
-  xyz 246.098 302.225 2000
+  xyz 246.106 302.04 2000
 end
 classcanvas 129284 class_ref 129284 // Vehicules
   classdiagramsettings member_max_width 0 end
-  xyz 82.0145 206.176 2000
+  xyz 82.3914 206.339 2000
 end
 classcanvas 131332 class_ref 135812 // Devis
   classdiagramsettings member_max_width 0 end
-  xyz 449.963 282.901 2000
+  xyz 449.798 282.768 2000
 end
 classcanvas 131588 class_ref 135940 // Facture
   classdiagramsettings member_max_width 0 end
-  xyz 451.172 383.141 2000
+  xyz 451.193 383.406 2000
 end
 classcanvas 132356 class_ref 142468 // Locations
   classdiagramsettings member_max_width 0 end
-  xyz 581.294 109.037 2000
+  xyz 581.506 109.974 2000
 end
 classcanvas 132996 class_ref 128132 // Adresse
   classdiagramsettings member_max_width 0 end
-  xyz 203.536 45.8023 2000
+  xyz 204.885 45.0796 2000
 end
 relationcanvas 129412 relation_ref 128004 // <generalisation>
   from ref 129028 z 2001 to ref 128900
@@ -69,7 +69,7 @@ end
 relationcanvas 130052 relation_ref 128644 // <association>
   from ref 128004 z 2001 to ref 128388
   no_role_a no_role_b
-  multiplicity_a_pos 349 200 3000 multiplicity_b_pos 347 153 3000
+  multiplicity_a_pos 350 200 3000 multiplicity_b_pos 347 152 3000
 end
 relationcanvas 130308 relation_ref 128772 // <association>
   from ref 128644 z 2001 to ref 128516
@@ -89,7 +89,7 @@ end
 relationcanvas 131076 relation_ref 129412 // <composition>
   from ref 128260 z 2001 to ref 128004
   no_role_a no_role_b
-  multiplicity_a_pos 416 74 3000 multiplicity_b_pos 446 62 3000
+  multiplicity_a_pos 414 75 3000 multiplicity_b_pos 445 63 3000
 end
 relationcanvas 131204 relation_ref 129540 // <composition>
   from ref 128772 z 2001 to ref 128388
@@ -110,6 +110,11 @@ relationcanvas 132612 relation_ref 136708 // <composition>
   from ref 132356 z 2001 to ref 128516
   no_role_a no_role_b
   multiplicity_a_pos 519 168 3000 multiplicity_b_pos 566 142 3000
+end
+relationcanvas 133124 relation_ref 143236 // <composition>
+  from ref 128004 z 2001 to ref 132996
+  no_role_a no_role_b
+  multiplicity_a_pos 262 89 3000 multiplicity_b_pos 301 89 3000
 end
 line 130180 -_-_
   from ref 128516 z 2002 to ref 130052
