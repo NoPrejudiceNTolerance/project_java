@@ -3,24 +3,16 @@ package principal;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -42,14 +34,12 @@ public class FenetreListeEmprunteur extends JFrame{
 	
 	private EmprunteursModel empModel;
 	private JTable table;
+	private ListSelectionModel tableListModel;
 	
 	private JButton bnAjouter;
 	private JButton bnModifier;
 	private JButton bnSupprimer;
 	private JButton bnFermer;
-	
-	private JMenuItem item1, item2, item3;
-	private JPopupMenu menu;
 	
 	public FenetreListeEmprunteur(){
 		this.setTitle("Liste des emprunteurs");
@@ -65,6 +55,9 @@ public class FenetreListeEmprunteur extends JFrame{
 		empModel = new EmprunteursModel();
 		table = new JTable(empModel);
 		table.setAutoCreateRowSorter(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableListModel = table.getSelectionModel();
+		tableListModel.addListSelectionListener(new TableListen());
 		
 		//listeEmprunteurs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		//listeEmprunteurs.addListSelectionListener(new ListListen());
@@ -80,6 +73,7 @@ public class FenetreListeEmprunteur extends JFrame{
 		bnModifier = new JButton("Modifier...");
 		bnModifier.setMaximumSize(new Dimension(100, 40));
 		bnModifier.setEnabled(false);
+		bnModifier.addActionListener(new SorsSorsSors());
 		bnSupprimer = new JButton("Supprimer");
 		bnSupprimer.setMaximumSize(new Dimension(100, 40));
 		bnSupprimer.setEnabled(false);
@@ -110,18 +104,9 @@ public class FenetreListeEmprunteur extends JFrame{
 		this.pack();
 	}
 	
-	//a suppr
-	public void actualiserListe(Emprunteurs e)
-	{
-		Emprunteur dernierEmp = e.getEmprunteurs().get(e.getEmprunteurs().size()-1);
-		//modele.addElement(dernierEmp.getNom() + " " + dernierEmp.getPrenom());
-	}
-	
 	public void ajouterEmprunteur() {
 		empModel.ajoutEmprunteur();
 	}
-	
-	public void supprimerEmprunteur();
 	
 	public void modifierElement(int index, String element)
 	{
@@ -136,27 +121,31 @@ public class FenetreListeEmprunteur extends JFrame{
 			{
 				System.exit(0);
 			}
-			if(e.getSource() == bnSupprimer)
+			if(e.getSource() == bnSupprimer && !tableListModel.isSelectionEmpty())
 			{
 				int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment supprimer cet emprunteur ?", "Suppression", JOptionPane.YES_NO_OPTION);
 				if(reponse == JOptionPane.YES_OPTION)
 				{
-					//Principale.supprimerEmprunteur(id);//à faire
-					//modele.remove(listeEmprunteurs.getSelectedIndex());
+					empModel.supprEmprunteur(table.convertRowIndexToModel(table.getSelectedRow()));
 				}
 			}
 			if(e.getSource() == bnAjouter)
 			{
 				Principale.ouvrirFenetreAjout();
 			}
+			if(e.getSource() == bnModifier)
+			{
+				//envoie l'ID de l'utilisateur a modifier (complexe car depend du tri du tableau)
+				Principale.ouvrirFenetreModifier((int)(Integer.parseInt((String)empModel.getValueAt(table.convertRowIndexToModel(table.getSelectedRow()), 0))));
+			}
 		}
 	}
 	
-	public class ListListen implements ListSelectionListener
+	public class TableListen implements ListSelectionListener
 	{
 		public void valueChanged(ListSelectionEvent arg0)
 		{
-			if(listeEmprunteurs.getSelectedIndex() == -1)
+			if(tableListModel.isSelectionEmpty())
 			{
 				bnModifier.setEnabled(false);
 				bnSupprimer.setEnabled(false);

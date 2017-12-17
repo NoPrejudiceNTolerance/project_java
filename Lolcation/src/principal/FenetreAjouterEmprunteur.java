@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class FenetreAjouterEmprunteur extends JDialog {
+public class FenetreAjouterEmprunteur extends FenetreAjouterElement {
 	/**
 	 * 
 	 */
@@ -49,11 +49,14 @@ public class FenetreAjouterEmprunteur extends JDialog {
 	private JButton bnAnnuler;
 	
 	public FenetreAjouterEmprunteur(){
-		this.setTitle("Ajouter un emprunteur");
+		super("Ajouter un emprunteur");
+		/*
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setModal(true);
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		*/
+		super.build();
 		this.build();
 	}
 	
@@ -129,12 +132,13 @@ public class FenetreAjouterEmprunteur extends JDialog {
 		this.pack();
 	}
 	
-	public void setNom(String n){
-		saisieNom.setText(n);
-	}
-	
-	public void setPrenom(String p){
-		saisiePrenom.setText(p);
+	public void viderZonesSaisie() {
+		saisieNom.setText("");
+		saisiePrenom.setText("");
+		saisieNumero.setText("");
+		saisieRue.setText("");
+		saisieCp.setText("");
+		saisieVille.setText("");
 	}
 	
 	public void activeBoutonOK(boolean b){
