@@ -13,15 +13,11 @@ public class EmprunteursModel extends AbstractTableModel {
 
 	private final String[] entetes = { "ID", "Prénom", "Nom", "Adresse", "CP" };
 
-	//private NoteService noteService;
-
 	private List<Emprunteur> emprunteurs;
 	
 	public EmprunteursModel() {
 		super();
 		emprunteurs = Principale.getListeEmprunteurs().getEmprunteurs();
-		//noteService = NoteService.getInstance();
-		//notes = noteService.findLastNotes();
 		
 	}
 

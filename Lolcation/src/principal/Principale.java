@@ -1,7 +1,7 @@
 package principal;
 
 public class Principale {
-	// la classe principale g�re les 3 fen�tres de l'application
+	// la classe principale gere les 3 fen�tres de l'application
 	static private FenetreListeEmprunteur fenListe;
 	static private FenetreAjouterEmprunteur fenAjout;
 	static private FenetreModifierEmprunteur fenModif;
@@ -31,9 +31,9 @@ public class Principale {
 		fenListe.ajouterEmprunteur();
 	}
 	
-	//a suppr
-	static public void modifierEmprunteur(String nom, String prenom, int index){
-		fenListe.modifierElement(index, nom+" "+prenom);
+	static public void demandeAjouterLocation() {
+		//new Location();
+		//fenListeLocations.ajouterLocation();
 	}
 	
 	public static void main(String[] args) {

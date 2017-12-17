@@ -3,7 +3,6 @@ package principal;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -16,7 +15,6 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -29,14 +27,14 @@ public abstract class FenetreAjouterElement extends JDialog {
 
 	private final int ESPACE=20;
 	
-	private JPanel panelPrincipal;
-	private JPanel panelSaisie;
-	private JPanel panelBoutons;
+	protected JPanel panelPrincipal;
+	protected JPanel panelSaisieP;
+	protected JPanel panelBoutons;
 	
-	private List listeChampsTexte;
+	protected List<JTextField> listeChampsTexte;
 	
-	private JButton bnOK;
-	private JButton bnAnnuler;
+	protected JButton bnOK;
+	protected JButton bnAnnuler;
 	
 	public FenetreAjouterElement(String titre){
 		this.setTitle(titre);
@@ -51,10 +49,11 @@ public abstract class FenetreAjouterElement extends JDialog {
 		listeChampsTexte = new ArrayList<JTextField>();
 		
 		//panel pour la saisie
-		panelSaisie = new JPanel();
-		panelSaisie.setLayout(new GridLayout(2,2,0,10));
-		panelSaisie.setBorder(BorderFactory.createEmptyBorder(20,10,100,10));
-	
+		panelSaisieP = new JPanel();
+		panelSaisieP.setLayout(new BorderLayout());
+		
+		this.buildFen();
+		
 		//panel des boutons
 		bnOK = new JButton("OK");
 		bnOK.setPreferredSize(new Dimension(80, 30));
@@ -76,10 +75,15 @@ public abstract class FenetreAjouterElement extends JDialog {
 		panelPrincipal = new JPanel();
 		panelPrincipal.setLayout(new BorderLayout());
 		panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		panelPrincipal.add(panelSaisie, BorderLayout.WEST);
+		panelPrincipal.add(panelSaisieP, BorderLayout.WEST);
 		panelPrincipal.add(Box.createRigidArea(new Dimension(1,ESPACE)));
 		panelPrincipal.add(panelBoutons, BorderLayout.SOUTH);
+		
+		this.setContentPane(panelPrincipal);
+		this.pack();
 	}
+	
+	abstract public void buildFen();
 	
 	public void activeBoutonOK(boolean b){
 		bnOK.setEnabled(b);
@@ -91,6 +95,8 @@ public abstract class FenetreAjouterElement extends JDialog {
 		}
 		return false;
 	}
+	
+	abstract public void boutonOk();
 	
 	public class ChampsObligatoires implements KeyListener
 	{
@@ -134,7 +140,7 @@ public abstract class FenetreAjouterElement extends JDialog {
 			if(e.getSource() == bnOK)
 			{
 				dispose();
-				Principale.demandeAjouterEmprunteur(saisieNom.getText(), saisiePrenom.getText(), (short)Short.parseShort(saisieNumero.getText()), saisieRue.getText(), (int)Integer.parseInt(saisieCp.getText()), saisieVille.getText());
+				boutonOk();
 			}
 		}
 	}
