@@ -51,6 +51,20 @@ class Emprunteurs implements Iterable<Emprunteur> {
 	  }
 	  return false;
   }
+  
+  /**
+   * Gets the emprunteur with the ID : id
+   * 
+   * @return
+   */
+  public Emprunteur getEmprunteur(int id) {
+	  for(Emprunteur e : this) {
+		  if(e.getId() == id) {
+			  return e;
+		  }
+	  }
+	  return null;
+  }
 
   /**
    * Gets the emprunteurs.

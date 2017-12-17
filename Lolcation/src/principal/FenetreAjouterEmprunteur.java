@@ -129,12 +129,13 @@ public class FenetreAjouterEmprunteur extends JDialog {
 		this.pack();
 	}
 	
-	public void setNom(String n){
-		saisieNom.setText(n);
-	}
-	
-	public void setPrenom(String p){
-		saisiePrenom.setText(p);
+	public void viderZonesSaisie() {
+		saisieNom.setText("");
+		saisiePrenom.setText("");
+		saisieNumero.setText("");
+		saisieRue.setText("");
+		saisieCp.setText("");
+		saisieVille.setText("");
 	}
 	
 	public void activeBoutonOK(boolean b){

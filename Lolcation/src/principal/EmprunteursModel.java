@@ -94,9 +94,7 @@ public class EmprunteursModel extends AbstractTableModel {
 	}
 	
 	public void supprEmprunteur(int rowIndex) {
-        //Principale.getListeEmprunteurs().supprimerEmprunteur(emprunteur);
-		//emprunteurs.remove(rowIndex);
- 
+        Principale.getListeEmprunteurs().supprimerEmprunteur(Integer.parseInt((String)this.getValueAt(rowIndex, 0)));
         fireTableRowsDeleted(rowIndex, rowIndex);
     }
 }

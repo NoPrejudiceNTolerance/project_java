@@ -11,16 +11,11 @@ import java.awt.event.KeyListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 
 
 public class FenetreModifierEmprunteur extends JDialog {
@@ -33,20 +28,30 @@ public class FenetreModifierEmprunteur extends JDialog {
 	
 	private JPanel panelPrincipal;
 	private JPanel panelSaisie;
-	private JPanel panelNom;
-	private JPanel panelPrenom;
+	private JPanel panelSaisie2;
 	private JPanel panelBoutons;
 	
-	private JLabel nom;
-	private JTextField saisieNom;
 	private JLabel prenom;
 	private JTextField saisiePrenom;
-	private JLabel legende;
+	private JLabel nom;
+	private JTextField saisieNom;
+	
+	private JLabel numero;
+	private JTextField saisieNumero;
+	private JLabel rue;
+	private JTextField saisieRue;
+	private JLabel cp;
+	private JTextField saisieCp;
+	private JLabel ville;
+	private JTextField saisieVille;
+	
 	private JButton bnOK;
 	private JButton bnAnnuler;
 	
+	private int id;
+	
 	public FenetreModifierEmprunteur(){
-		this.setTitle("Ajouter un �tudiant");
+		this.setTitle("");
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setModal(true);
@@ -55,14 +60,26 @@ public class FenetreModifierEmprunteur extends JDialog {
 	}
 	
 	public void build(){
-		//panel pour la saisie		
-		nom = new JLabel("Nom �tudiant (*) : ");
+		//panel pour la saisie
+		nom = new JLabel("Nom (*) : ");
 		saisieNom = new JTextField();
 		saisieNom.addKeyListener(new ChampsObligatoires());
-		prenom = new JLabel("Pr�nom �tudiant (*) : ");
+		prenom = new JLabel("Prenom (*) : ");
 		saisiePrenom = new JTextField();
 		saisiePrenom.addKeyListener(new ChampsObligatoires());
-		legende = new JLabel("(*) saisie obligatoire");
+		
+		numero = new JLabel("Numéro (*) : ");
+		saisieNumero = new JTextField();
+		saisieNumero.addKeyListener(new ChampsObligatoires());
+		rue = new JLabel("Rue (*) : ");
+		saisieRue = new JTextField();
+		saisieRue.addKeyListener(new ChampsObligatoires());
+		cp = new JLabel("CP (*) : ");
+		saisieCp = new JTextField();
+		saisieCp.addKeyListener(new ChampsObligatoires());
+		ville = new JLabel("Ville (*) : ");
+		saisieVille = new JTextField();
+		saisieVille.addKeyListener(new ChampsObligatoires());
 				
 		panelSaisie = new JPanel();
 		panelSaisie.setLayout(new GridLayout(2,2,0,10));
@@ -70,6 +87,19 @@ public class FenetreModifierEmprunteur extends JDialog {
 		panelSaisie.add(saisieNom);
 		panelSaisie.add(prenom);
 		panelSaisie.add(saisiePrenom);
+		panelSaisie.setBorder(BorderFactory.createEmptyBorder(20,10,100,10));
+		
+		panelSaisie2 = new JPanel();
+		panelSaisie2.setLayout(new GridLayout(4,2,0,10));
+		panelSaisie2.add(numero);
+		panelSaisie2.add(saisieNumero);
+		panelSaisie2.add(rue);
+		panelSaisie2.add(saisieRue);
+		panelSaisie2.add(cp);
+		panelSaisie2.add(saisieCp);
+		panelSaisie2.add(ville);
+		panelSaisie2.add(saisieVille);
+		panelSaisie2.setBorder(BorderFactory.createEmptyBorder(10,20,20,10));
 	
 		//panel des boutons
 		bnOK = new JButton("OK");
@@ -79,32 +109,40 @@ public class FenetreModifierEmprunteur extends JDialog {
 		bnAnnuler = new JButton("Annuler");
 		bnAnnuler.setPreferredSize(new Dimension(80, 30));
 		bnAnnuler.addActionListener(new Boutons());
+		
 		panelBoutons = new JPanel();
 		panelBoutons.setLayout(new BoxLayout(panelBoutons, BoxLayout.X_AXIS));
 		panelBoutons.add(Box.createHorizontalGlue());
 		panelBoutons.add(bnOK);
-		panelBoutons.add(Box.createRigidArea(new Dimension(ESPACE,1)));
+		panelBoutons.add(Box.createRigidArea(new Dimension(1, ESPACE)));
 		panelBoutons.add(bnAnnuler);
+		panelBoutons.add(Box.createHorizontalGlue());
 		
 		//panel principal
 		panelPrincipal = new JPanel();
-		panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
+		panelPrincipal.setLayout(new BorderLayout());
 		panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		panelPrincipal.add(panelSaisie);
-		panelPrincipal.add(legende);
+		panelPrincipal.add(panelSaisie, BorderLayout.WEST);
+		panelPrincipal.add(panelSaisie2, BorderLayout.EAST);
 		panelPrincipal.add(Box.createRigidArea(new Dimension(1,ESPACE)));
-		panelPrincipal.add(panelBoutons);
+		panelPrincipal.add(panelBoutons, BorderLayout.SOUTH);
 		
 		this.setContentPane(panelPrincipal);
 		this.pack();
 	}
 	
-	public void setNom(String n){
-		saisieNom.setText(n);
+	public void setId(int id) {
+		this.id = id;
 	}
 	
-	public void setPrenom(String p){
-		saisiePrenom.setText(p);
+	public void remplirZonesSaisie() {
+		Emprunteur e = Principale.getListeEmprunteurs().getEmprunteur(this.id);
+		saisieNom.setText(e.getNom());
+		saisiePrenom.setText(e.getPrenom());
+		saisieNumero.setText(String.valueOf(e.getAdresse().getNumero()));
+		saisieRue.setText(e.getAdresse().getRue());
+		saisieCp.setText(String.valueOf(e.getAdresse().getCp()));
+		saisieVille.setText(e.getAdresse().getVille());
 	}
 	
 	public void activeBoutonOK(boolean b){
@@ -115,7 +153,12 @@ public class FenetreModifierEmprunteur extends JDialog {
 	{
 		public void keyReleased(KeyEvent arg0)
 		{
-			if(saisieNom.getText().equals("") || saisiePrenom.getText().equals(""))
+			if(saisieNom.getText().equals("") ||
+					saisiePrenom.getText().equals("") ||
+					saisieNumero.getText().equals("") ||
+					saisieRue.getText().equals("") ||
+					saisieCp.getText().equals("") ||
+					saisieVille.getText().equals(""))
 			{
 				activeBoutonOK(false);
 			}
@@ -153,7 +196,13 @@ public class FenetreModifierEmprunteur extends JDialog {
 			if(e.getSource() == bnOK)
 			{
 				dispose();
-				Principale.demandeAjouterEmprunteur(saisieNom.getText(), saisiePrenom.getText());
+				Emprunteur emp = Principale.getListeEmprunteurs().getEmprunteur(id);
+				emp.setNom(saisieNom.getText());
+				emp.setPrenom(saisiePrenom.getText());
+				emp.getAdresse().setNumero((short)Short.parseShort(saisieNumero.getText()));
+				emp.getAdresse().setRue(saisieRue.getText());
+				emp.getAdresse().setCp((int)Integer.parseInt(saisieCp.getText()));
+				emp.getAdresse().setVille(saisieVille.getText());
 			}
 		}
 	}
