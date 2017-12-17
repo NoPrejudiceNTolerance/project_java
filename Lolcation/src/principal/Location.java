@@ -84,11 +84,10 @@ class Location implements Iterable<Exemplaire>{
 	 * Rendre les véhicules loués.
 	 * @param dateRendu date de rendu
 	 */
-	public void rendre(Date dateRendu, List<Plein> listeDesReservoirs, List<Etat> listeDesEtats) {
+	public void rendre(Date dateRendu) {
 		if(this.statue == Statue.EN_COURS) {
 			this.retard = fin.dureeTo(dateRendu);
 			this.rendu = dateRendu;
-			renduExemplaires(listeDesReservoirs, listeDesEtats);
 			this.facture = new Facture(retard, supplementEtat, supplementPlein, this.devis.getpDevis(), this.numero);
 			
 			this.statue = Statue.RENDU;
@@ -100,6 +99,7 @@ class Location implements Iterable<Exemplaire>{
 	 * @param listeDesReservoirs
 	 * @param listeDesEtats
 	 */
+	@SuppressWarnings("unused")
 	private void renduExemplaires(List<Plein> listeDesReservoirs, List<Etat> listeDesEtats) {
 		Iterator<Plein> i_P = listeDesReservoirs.iterator();
 		Iterator<Etat> i_E = listeDesEtats.iterator();

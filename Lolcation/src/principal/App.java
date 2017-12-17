@@ -46,7 +46,7 @@ public class App {
 		
 		// Création d'une location de test
 		Location myLoc = new Location(new Date(22,06,2017), new Date(04,12,2017), e ,flotte.getExemplaires(), true, locations);
-		myLoc.rendre(new Date(7,12,2017), new List(), new List());
+		myLoc.rendre(new Date(7,12,2017));
 		
 	}
 

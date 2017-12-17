@@ -2,11 +2,8 @@ package principal;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
-
 /**
  * Modélise les adhérents, ceux qui peuvent louer un véhicule.
- *
  * @author PC-Louis
  * @see Emprunteurs
  */
@@ -58,13 +55,7 @@ class Emprunteur {
   }
 
   /**
-   * Ramener un (ou plusieurs) véhicule(s) loué(s).
-   * @see Location
-   */
-  public void  ramener() {
-  }
-  /**
-   * Modifier.
+   * modifier un emprunteur
    */
   public void  modifier() {
   }
