@@ -1,4 +1,4 @@
-package groceryOrder.graphics;
+package groceryOrder.view;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import groceryOrder.classes.User;
+import groceryOrder.model.BO.User;
 
 public class Profile extends JPanel {
 

@@ -1,4 +1,4 @@
-package groceryOrder.classes;
+package groceryOrder.model.BO;
 
 public abstract class User {
 	private int id;

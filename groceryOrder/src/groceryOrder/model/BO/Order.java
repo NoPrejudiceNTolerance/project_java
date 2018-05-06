@@ -1,14 +1,14 @@
-package groceryOrder.classes;
+package groceryOrder.model.BO;
 
 public class Order {
 
-	private Item item;
+	private Copy copy;
 	private int id;
 	private State state;
 	
-	public Order(Item item, int id) {
+	public Order(Copy copy , int id) {
 		super();
-		this.item = item;
+		this.copy = copy;
 		this.id = id;
 		this.state = State.IN_PROGRESS;
 	}
@@ -21,8 +21,8 @@ public class Order {
 		this.state = state;
 	}
 
-	public Item getItem() {
-		return item;
+	public Copy getItem() {
+		return copy;
 	}
 
 	public int getId() {
@@ -53,11 +53,11 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [item=" + item + ", id=" + id + ", state=" + state + "]";
+		return "Order [item=" + copy + ", id=" + id + ", state=" + state + "]";
 	}
 
 	public Object[] toTable() {
-		Object[] tab = {this.getId(),this.item.getName(), this.state};
+		Object[] tab = {this.getId(),this.copy.getItem().getName(), this.state};
 		return tab;
 	}
 

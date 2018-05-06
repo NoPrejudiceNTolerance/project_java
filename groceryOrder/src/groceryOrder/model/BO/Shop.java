@@ -1,20 +1,20 @@
-package groceryOrder.classes;
+package groceryOrder.model.BO;
 
 import java.util.LinkedList;
 
 public class Shop {
 
-	private LinkedList<Stack> stacks;
+	private LinkedList<Copy> stock;
 	private String name;
 	private int id;
 	
-	public Shop(LinkedList<Stack> stacks, String name, int id) {
-		this.stacks = stacks;
+	public Shop(LinkedList<Copy> stock, String name, int id) {
+		this.stock = stock;
 		this.name = name;
 		this.id = id;
 	}
-	public LinkedList<Stack> getStacks() {
-		return stacks;
+	public LinkedList<Copy> getStock() {
+		return stock;
 	}
 	public String getName() {
 		return name;
@@ -22,11 +22,11 @@ public class Shop {
 	public int getId() {
 		return id;
 	}
-	public boolean add(Stack stack) {
-		return stacks.add(stack);
+	public boolean add(Copy copy) {
+		return this.stock.add(copy);
 	}
-	public boolean remove(Stack stack) {
-		return stacks.remove(stack);
+	public boolean remove(Copy copy) {
+		return this.stock.remove(copy);
 	}
 	@Override
 	public int hashCode() {
@@ -50,6 +50,6 @@ public class Shop {
 	}
 	@Override
 	public String toString() {
-		return "Shop [stacks=" + stacks + ", name=" + name + ", id=" + id + "]";
+		return "Shop [stock=" + stock + ", name=" + name + ", id=" + id + "]";
 	}
 }

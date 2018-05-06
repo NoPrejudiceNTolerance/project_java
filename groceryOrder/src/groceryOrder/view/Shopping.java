@@ -1,7 +1,6 @@
-package groceryOrder.graphics;
+package groceryOrder.view;
 
 import java.awt.LayoutManager;
-
 
 import javax.swing.JPanel;
 

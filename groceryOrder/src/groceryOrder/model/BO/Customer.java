@@ -1,14 +1,16 @@
-package groceryOrder.classes;
+package groceryOrder.model.BO;
 
 import java.util.LinkedList;
 
 public class Customer extends User {
 
 	private LinkedList<Order> orders;
+	private String email;
 	
 	public Customer(int id, String name, String lastname, String username, LinkedList<Order> orders) {
 		super(id, name, lastname, username);
 		this.orders = orders;
+		this.email = null;
 	}
 
 	

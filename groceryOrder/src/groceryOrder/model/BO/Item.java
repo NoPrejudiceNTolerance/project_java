@@ -1,4 +1,4 @@
-package groceryOrder.classes;
+package groceryOrder.model.BO;
 
 public class Item {
 

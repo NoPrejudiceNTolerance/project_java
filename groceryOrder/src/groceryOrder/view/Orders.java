@@ -1,7 +1,6 @@
-package groceryOrder.graphics;
+package groceryOrder.view;
 
 import java.awt.GridBagConstraints;
-
 import java.awt.LayoutManager;
 
 import javax.swing.JLabel;
@@ -9,8 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import groceryOrder.classes.Customer;
-import groceryOrder.classes.Order;
+import groceryOrder.model.BO.Customer;
+import groceryOrder.model.BO.Order;
 
 public class Orders extends JPanel {
 
@@ -26,12 +25,12 @@ public class Orders extends JPanel {
 	public Orders(Customer user) {
 		this.user = user;
 		this.title = new JLabel("<html><span style='font-size:20px'>"+ " My Orders " +"</span></html>");
-		Object[][] data = {};
+		Object[][] data = {{1, 5, "COMPLETED"}};
 		int i = 0;
 		/*for(Order or : this.user.getOrders()) {
 			data[i] = or.toTable();
 			i++;
-		} */
+		}*/
 		this.table = new JTable(data, TABLE_HEADS);
 		buildPanel();
 	}

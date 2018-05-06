@@ -1,13 +1,11 @@
 package groceryOrder.main;
 
-import java.util.LinkedList;
-
 import javax.swing.SwingUtilities;
 
-import groceryOrder.classes.Customer;
-import groceryOrder.classes.User;
-import groceryOrder.graphics.CustomerWindow;
-import groceryOrder.graphics.LoginWindow;
+import groceryOrder.model.BO.Customer;
+import groceryOrder.model.DAO.Objects.FactoryDAO;
+import groceryOrder.view.CustomerWindow;
+
 
 public class Main {
 
@@ -15,6 +13,9 @@ public class Main {
 		
 		Customer user = new Customer(1, "Kelly", "Bernel", "kshopping", null);
 		
+
+		
+
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				
@@ -22,6 +23,8 @@ public class Main {
 				login.setVisible(true);
 			}
 		});
+		
+
 
 	}
 

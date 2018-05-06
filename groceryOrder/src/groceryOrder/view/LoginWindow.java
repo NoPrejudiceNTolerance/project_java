@@ -1,4 +1,4 @@
-package groceryOrder.graphics;
+package groceryOrder.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

@@ -1,11 +1,10 @@
-package groceryOrder.graphics;
+package groceryOrder.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import groceryOrder.classes.Customer;
-import groceryOrder.classes.User;
+import groceryOrder.model.BO.Customer;
 
 public class CustomerWindow extends JFrame {
 
