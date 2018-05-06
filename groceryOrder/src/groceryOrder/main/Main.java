@@ -23,11 +23,9 @@ public class Main {
 		ShopDAO daoShop = FactoryDAO.getShopDAO();
 		Shop shop = new Shop(null, "Auchan", 1);
 		Item item = new Item(1, "Tomato");
-		Copy copy = new Copy(1, item, shop);
 
-		daoItem.add(item);
-		daoShop.add(shop);
-		daoCopy.add(copy);
+		Copy copy = daoCopy.getCopy(1);
+		System.out.println(copy);
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
