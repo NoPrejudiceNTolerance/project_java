@@ -25,4 +25,8 @@ public class FactoryDAO {
 	public static ShopDAO getShopDAO() {
 		return new ShopDAO(conn);
 	}
+	
+	public static ItemDAO getItemDAO() {
+		return new ItemDAO(conn);
+	}
 }

@@ -3,20 +3,13 @@ package groceryOrder.model.BO;
 public class Copy {
 
 	private Item item;
-	private Customer buyer = null;
+	private Shop shop;
 	private int id;
 	
-	public Copy(int id, Item item) {
+	public Copy(int id, Item item, Shop shop) {
 		this.item = item;
 		this.id = id;
-	}
-
-	public Customer getBuyer() {
-		return buyer;
-	}
-
-	public void setBuyer(Customer buyer) {
-		this.buyer = buyer;
+		this.shop = shop;
 	}
 
 	public Item getItem() {
@@ -47,6 +40,10 @@ public class Copy {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public Shop getShop() {
+		return shop;
 	}
 
 }

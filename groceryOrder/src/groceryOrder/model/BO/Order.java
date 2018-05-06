@@ -3,12 +3,14 @@ package groceryOrder.model.BO;
 public class Order {
 
 	private Copy copy;
+	private Customer user;
 	private int id;
 	private State state;
 	
-	public Order(Copy copy , int id) {
+	public Order(Copy copy , int id, Customer user) {
 		super();
 		this.copy = copy;
+		this.user = user;
 		this.id = id;
 		this.state = State.IN_PROGRESS;
 	}
@@ -60,5 +62,10 @@ public class Order {
 		Object[] tab = {this.getId(),this.copy.getItem().getName(), this.state};
 		return tab;
 	}
+
+	public Customer getUser() {
+		return user;
+	}
+
 
 }

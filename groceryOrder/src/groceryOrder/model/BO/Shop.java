@@ -52,4 +52,7 @@ public class Shop {
 	public String toString() {
 		return "Shop [stock=" + stock + ", name=" + name + ", id=" + id + "]";
 	}
+	public void setStock(LinkedList<Copy> stock) {
+		this.stock = stock;
+	}
 }

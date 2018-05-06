@@ -10,7 +10,7 @@ import groceryOrder.model.DAO.Interfaces.IntUserDAO;
 
 public abstract class UserDAO implements IntUserDAO {
 
-	private Connection conn = null;
+	protected Connection conn = null;
 	
 	public UserDAO(Connection conn) {
 		this.conn = conn;
@@ -50,5 +50,22 @@ public abstract class UserDAO implements IntUserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void add(User user) {
+		String sql = "INSERT INTO User VALUES(?, ?, ?, ?)";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql);
+			pStat.setInt(1, user.getId());
+			pStat.setString(2, user.getName());
+			pStat.setString(3, user.getLastname());
+			pStat.setString(4, user.getUsername());
+			pStat.execute();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }
