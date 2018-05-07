@@ -19,9 +19,9 @@ public class ItemDAO implements IntItemDAO {
 	@Override
 	public Item getItem(int id) {
 		Item item = null;
-		String sql = "SELECT name FROM Item WHERE id = ?";
+		String sql = "SELECT name FROM \"Item\" WHERE id = ?";
 		try {
-			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY);
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pStat.setInt(1, id);
 			ResultSet result = pStat.executeQuery();
 			if(result.first()) {

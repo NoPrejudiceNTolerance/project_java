@@ -6,5 +6,6 @@ public interface IntAdminDAO {
 	public void delete(Admin admin);
 	public void add(Admin admin);
 	public void update(Admin customer);
-	public Admin getCustomer(int id);
+	public Admin getAdmin(int id);
+
 }

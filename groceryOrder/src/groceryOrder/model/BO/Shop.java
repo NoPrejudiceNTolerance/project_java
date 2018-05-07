@@ -50,7 +50,7 @@ public class Shop {
 	}
 	@Override
 	public String toString() {
-		return "Shop [stock=" + stock + ", name=" + name + ", id=" + id + "]";
+		return "Shop [name=" + name + ", id=" + id + "]";
 	}
 	public void setStock(LinkedList<Copy> stock) {
 		this.stock = stock;

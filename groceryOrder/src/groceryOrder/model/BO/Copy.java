@@ -46,4 +46,9 @@ public class Copy {
 		return shop;
 	}
 
+	@Override
+	public String toString() {
+		return "Copy [item=" + item.toString() + ", shop=" + shop.toString() + ", id=" + id + "]";
+	}
+
 }

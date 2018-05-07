@@ -48,7 +48,7 @@ public class CopyDAO implements IntCopyDAO {
 		
 		String sql = "SELECT id_item, id_Shop FROM \"Copy\" WHERE id = ?";
 		try {
-			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY);
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pStat.setInt(1, id);
 			ResultSet result = pStat.executeQuery();
 			if(result.first()) {
@@ -75,7 +75,7 @@ public class CopyDAO implements IntCopyDAO {
 		Item i = null;
 		String sql = "SELECT id_item, id FROM \"Copy\" WHERE id_Shop = ?";
 		try {
-			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY);
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pStat.setInt(1, shop.getId());
 			ResultSet results = pStat.executeQuery();
 			while(results.next()) {

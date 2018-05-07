@@ -1,6 +1,7 @@
 package groceryOrder.view;
 
-import java.awt.GridBagConstraints;
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.LayoutManager;
 
 import javax.swing.JLabel;
@@ -9,7 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import groceryOrder.model.BO.Customer;
-import groceryOrder.model.BO.Order;
 
 public class Orders extends JPanel {
 
@@ -24,7 +24,8 @@ public class Orders extends JPanel {
 	
 	public Orders(Customer user) {
 		this.user = user;
-		this.title = new JLabel("<html><span style='font-size:20px'>"+ " My Orders " +"</span></html>");
+		this.setLayout(new BorderLayout());
+		this.title = new JLabel("<html><span style='font-size:20px; color: #1976d2'>"+ " My Orders " +"</span></html>");
 		Object[][] data = {{1, 5, "COMPLETED"}};
 		int i = 0;
 		/*for(Order or : this.user.getOrders()) {
@@ -32,18 +33,14 @@ public class Orders extends JPanel {
 			i++;
 		}*/
 		this.table = new JTable(data, TABLE_HEADS);
+		table.setFont(new Font("Arial", Font.PLAIN, 16));
 		buildPanel();
 	}
 
 	private void buildPanel() {
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.CENTER;
 		this.removeAll();
-		c.gridx = 0;
-		c.gridy = 0;
-		this.add(title, c);
-		c.gridy = 1;
-		this.add(new JScrollPane(table), c);
+		this.add(title, BorderLayout.PAGE_START);
+		this.add(new JScrollPane(table), BorderLayout.CENTER);
 		this.updateUI();
 	}
 	

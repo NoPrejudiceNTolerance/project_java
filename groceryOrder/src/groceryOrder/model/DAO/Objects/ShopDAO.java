@@ -51,7 +51,7 @@ public class ShopDAO implements IntShopDAO {
 		String sql = "SELECT name FROM \"Shop\" WHERE id = ?";
 		CopyDAO daoCopy = FactoryDAO.getCopyDAO();
 		try {
-			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY);
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pStat.setInt(1, id);
 			ResultSet result = pStat.executeQuery();
 			if(result.first()) {

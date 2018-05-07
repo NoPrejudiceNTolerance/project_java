@@ -5,12 +5,13 @@ public abstract class User {
 	private String name;
 	private String lastname;
 	private String username;
-	
+	private String password;
 
-	public User(int id, String name, String lastname, String username) {
+	public User(int id, String name, String lastname, String username, String password) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.setPassword(password);
 		this.lastname = lastname;
 		this.username = username;
 	}
@@ -62,6 +63,14 @@ public abstract class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", lastname=" + lastname + ", username=" + username + "]";
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

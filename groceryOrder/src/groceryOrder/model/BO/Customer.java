@@ -6,8 +6,8 @@ public class Customer extends User {
 
 	private LinkedList<Order> orders;
 	
-	public Customer(int id, String name, String lastname, String username, LinkedList<Order> orders) {
-		super(id, name, lastname, username);
+	public Customer(int id, String name, String lastname, String username, LinkedList<Order> orders, String password) {
+		super(id, name, lastname, username, password);
 		this.orders = orders;
 	}
 
@@ -28,5 +28,10 @@ public class Customer extends User {
 	@Override
 	public String toString() {
 		return "Customer [orders=" + orders + "] - " + super.toString();
+	}
+
+
+	public void setOrders(LinkedList<Order> orders) {
+		this.orders = orders;
 	}
 }

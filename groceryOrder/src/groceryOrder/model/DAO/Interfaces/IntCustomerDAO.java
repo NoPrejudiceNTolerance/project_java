@@ -7,4 +7,5 @@ public interface IntCustomerDAO {
 	public void add(Customer customer);
 	public void update(Customer customer);
 	public Customer getCustomer(int id);
+	public boolean exist(Customer user);
 }
