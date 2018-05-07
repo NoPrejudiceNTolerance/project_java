@@ -72,8 +72,20 @@ public class ShopDAO implements IntShopDAO {
 
 	@Override
 	public LinkedList<Shop> AllOfShops() {
-		// TODO Auto-generated method stub
-		return null;
+		LinkedList<Shop> shops = new LinkedList<Shop>();
+		String sql = "SELECT id FROM \"Shop\"";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet results = pStat.executeQuery();
+			while(results.next()) {
+				shops.add(this.getShop(results.getInt(1)));
+			}
+			results.close();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return shops;
 	}
 
 }

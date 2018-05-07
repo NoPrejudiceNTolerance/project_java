@@ -26,7 +26,8 @@ public class Orders extends JPanel {
 		this.user = user;
 		this.setLayout(new BorderLayout());
 		this.title = new JLabel("<html><span style='font-size:20px; color: #1976d2'>"+ " My Orders " +"</span></html>");
-		Object[][] data = {{1, 5, "COMPLETED"}};
+		Object[][] data = {{1, "Tomato", null}};
+		
 		int i = 0;
 		/*for(Order or : this.user.getOrders()) {
 			data[i] = or.toTable();
@@ -46,7 +47,6 @@ public class Orders extends JPanel {
 	
 	public Orders(LayoutManager arg0) {
 		super(arg0);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Orders(boolean isDoubleBuffered) {

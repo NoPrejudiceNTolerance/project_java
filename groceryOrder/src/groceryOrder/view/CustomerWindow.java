@@ -43,7 +43,7 @@ public class CustomerWindow extends JFrame {
 		JPanel contentPane = new JPanel();
 		this.pages.addTab("<html><p style='font-size: 12px; color: #d32f2f'>Home</p></html>", new ImageIcon("D:\\Programs\\GitHub\\Java_project\\project_java\\groceryOrder\\src\\user.png"), new Home(this.customer));
 		this.pages.addTab("<html><p style='font-size: 12px; color: #d32f2f'>Orders</p></html>",  new ImageIcon("D:\\Programs\\GitHub\\Java_project\\project_java\\groceryOrder\\src\\order.png") , new Orders((Customer)customer));
-		this.pages.addTab("<html><p style='font-size: 12px; color: #d32f2f'>Purchase</p></html>", new ImageIcon("D:\\Programs\\GitHub\\Java_project\\project_java\\groceryOrder\\src\\store.png"),new Shopping());
+		this.pages.addTab("<html><p style='font-size: 12px; color: #d32f2f'>Purchase</p></html>", new ImageIcon("D:\\Programs\\GitHub\\Java_project\\project_java\\groceryOrder\\src\\store.png"),new Shopping((Customer)customer));
 		contentPane.add(this.pages);
 		return contentPane;
 	}

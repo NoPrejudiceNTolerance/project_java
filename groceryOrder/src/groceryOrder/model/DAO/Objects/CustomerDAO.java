@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import groceryOrder.model.BO.Copy;
 import groceryOrder.model.BO.Customer;
 import groceryOrder.model.BO.Order;
+import groceryOrder.model.BO.User;
 import groceryOrder.model.DAO.Interfaces.IntCustomerDAO;
 
 public class CustomerDAO extends UserDAO implements IntCustomerDAO {
@@ -84,5 +86,22 @@ public class CustomerDAO extends UserDAO implements IntCustomerDAO {
 	public boolean exist(Customer user) {
 		return super.exist(user);
 	}
+
+	@Override
+	public boolean buy(User user, Copy copy) {
+		String sql = "UPDATE \"Copy\" SET id_User = '?' WHERE id = ?";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql);
+			pStat.execute();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+
+
 
 }

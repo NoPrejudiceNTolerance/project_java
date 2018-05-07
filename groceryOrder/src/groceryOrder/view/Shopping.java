@@ -1,8 +1,14 @@
 package groceryOrder.view;
 
-import java.awt.LayoutManager;
+import java.awt.BorderLayout;
+import java.util.LinkedList;
 
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+import groceryOrder.controller.ShoppingControler;
+import groceryOrder.model.BO.Customer;
+import groceryOrder.model.BO.Shop;
 
 public class Shopping extends JPanel {
 
@@ -11,23 +17,26 @@ public class Shopping extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Shopping() {
+	private JTabbedPane shops;
+	private LinkedList<Shop> allShops = new LinkedList<Shop>();
+	private ShoppingControler controler;
 	
+	public Shopping(Customer customer) {
+		super();
+		controler = new ShoppingControler();
+		allShops = controler.allShops();
+		shops = new JTabbedPane();
+		for(Shop s : allShops) {
+			shops.add(s.getName(), new ShopPanel(s, customer));
+		}
+		this.setLayout(new BorderLayout());
+		buildPane();
+	}
+	
+	public void buildPane() {
+		this.add(shops, BorderLayout.PAGE_START);
 	}
 
-	public Shopping(LayoutManager layout) {
-		super(layout);
-		// TODO Auto-generated constructor stub
-	}
 
-	public Shopping(boolean isDoubleBuffered) {
-		super(isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Shopping(LayoutManager layout, boolean isDoubleBuffered) {
-		super(layout, isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
 
 }

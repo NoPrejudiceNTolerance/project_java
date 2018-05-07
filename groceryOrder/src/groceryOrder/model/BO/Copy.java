@@ -1,10 +1,15 @@
 package groceryOrder.model.BO;
 
+import javax.swing.JButton;
+
+import groceryOrder.controller.BuyAction;
+
 public class Copy {
 
 	private Item item;
 	private Shop shop;
 	private int id;
+	private boolean bought = false;
 	
 	public Copy(int id, Item item, Shop shop) {
 		this.item = item;
@@ -51,4 +56,10 @@ public class Copy {
 		return "Copy [item=" + item.toString() + ", shop=" + shop.toString() + ", id=" + id + "]";
 	}
 
+	public Object[] toTable(User user) {
+		Object[] table = {item.getName(), item.getId(), id, new JButton(new BuyAction("buy", user, this))};
+		return table;
+	}
+
+	
 }

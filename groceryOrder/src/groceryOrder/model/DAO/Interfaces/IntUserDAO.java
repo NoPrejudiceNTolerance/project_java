@@ -1,5 +1,6 @@
 package groceryOrder.model.DAO.Interfaces;
 
+import groceryOrder.model.BO.Copy;
 import groceryOrder.model.BO.User;
 
 public interface IntUserDAO {
@@ -11,4 +12,5 @@ public interface IntUserDAO {
 	public int nextId();
 	public User connect(String password, String username);
 	public boolean isAdmin(int id);
+
 }
