@@ -31,16 +31,24 @@ public class ShopDAO implements IntShopDAO {
 		}
 
 	}
-
+	
 	@Override
-	public void delete(Shop shop) {
-		// TODO Auto-generated method stub
-
+	public void add(String name) {
+		Shop s = new Shop(null, this.nextID(), name);
+		add(s);
 	}
 
 	@Override
-	public void update(Shop shop) {
-		// TODO Auto-generated method stub
+	public void delete(int id) {
+		String sql = "DELETE FROM \"Shop\" WHERE id = ?";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql);
+			pStat.setInt(1, id);
+			pStat.execute();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -56,7 +64,7 @@ public class ShopDAO implements IntShopDAO {
 			ResultSet result = pStat.executeQuery();
 			if(result.first()) {
 				name = result.getString(1);
-				shop = new Shop(null, name, id);
+				shop = new Shop(null, id, name);
 				shop.setStock(daoCopy.getCopiesFor(shop));
 			} else {
 				return null;
@@ -86,6 +94,21 @@ public class ShopDAO implements IntShopDAO {
 			e.printStackTrace();
 		}
 		return shops;
+	}
+
+	@Override
+	public int nextID() {
+		String sql = "SELECT max(id) FROM \"Shop\"";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = pStat.executeQuery();
+			if(result.first()) {
+				return result.getInt(1) + 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

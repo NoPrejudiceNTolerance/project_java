@@ -89,9 +89,11 @@ public class CustomerDAO extends UserDAO implements IntCustomerDAO {
 
 	@Override
 	public boolean buy(User user, Copy copy) {
-		String sql = "UPDATE \"Copy\" SET id_User = '?' WHERE id = ?";
+		String sql = "UPDATE \"Copy\" SET \"id_User\" = ? WHERE id = ?";
 		try {
 			PreparedStatement pStat = conn.prepareStatement(sql);
+			pStat.setInt(1, user.getId());
+			pStat.setInt(2, copy.getId());
 			pStat.execute();
 			pStat.close();
 		} catch (SQLException e) {

@@ -17,24 +17,28 @@ import groceryOrder.model.BO.Shop;
 
 public class ShopPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JTable items;
 	private ShopTableController controller = new ShopTableController();
 	private final String[] TABLE_HEADS = {"Item name", "Item id", "Copy id", "Buy ?"};
 	private Object[][] data;
 	private JLabel name;
-	private Customer customer;
+	private CustomerWindow customerWindow;
 	
-	public ShopPanel(Shop shop, Customer customer) {
+	public ShopPanel(Shop shop, Customer customer, CustomerWindow customerWindow) {
 		this.setLayout(new BorderLayout());
-		this.customer = customer;
 		name = new JLabel("<html><span style='font-size:20px; color: #1976d2'>"+shop.getName()+"</span></html>");
 		data = controller.getDataFromShop(shop, customer);
 		items = new JTable(data, TABLE_HEADS);
-		items.setRowHeight(50);
+		items.setRowHeight(30);
 		items.setFont(new Font("Arial", Font.PLAIN, 18));
 		items.setDefaultRenderer(JButton.class, new TableComponent());
 		items.getColumn("Buy ?").setCellRenderer(new ButtonRenderer());
-		items.getColumn("Buy ?").setCellEditor(new ButtonEditor(new JCheckBox(), copy, customer));
+		items.getColumn("Buy ?").setCellEditor(new ButtonEditor(new JCheckBox(), customer, customerWindow));
 		build();
 	}
 	

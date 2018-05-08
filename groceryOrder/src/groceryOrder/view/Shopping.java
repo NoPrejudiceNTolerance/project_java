@@ -20,14 +20,16 @@ public class Shopping extends JPanel {
 	private JTabbedPane shops;
 	private LinkedList<Shop> allShops = new LinkedList<Shop>();
 	private ShoppingControler controler;
+	private CustomerWindow customerWindow;
 	
-	public Shopping(Customer customer) {
+	public Shopping(Customer customer, CustomerWindow customerWindow) {
 		super();
+		this.customerWindow = customerWindow;
 		controler = new ShoppingControler();
 		allShops = controler.allShops();
 		shops = new JTabbedPane();
 		for(Shop s : allShops) {
-			shops.add(s.getName(), new ShopPanel(s, customer));
+			shops.add(s.getName(), new ShopPanel(s, customer, customerWindow));
 		}
 		this.setLayout(new BorderLayout());
 		buildPane();

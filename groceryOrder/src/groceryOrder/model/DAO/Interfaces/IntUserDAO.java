@@ -12,5 +12,6 @@ public interface IntUserDAO {
 	public int nextId();
 	public User connect(String password, String username);
 	public boolean isAdmin(int id);
-
+	public void modifyName(String name, User user);
+	public void modifyLastname(String name, User user);
 }

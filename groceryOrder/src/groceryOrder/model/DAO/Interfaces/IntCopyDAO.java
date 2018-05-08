@@ -11,4 +11,5 @@ public interface IntCopyDAO {
 	public Copy getCopy(int id);
 	public LinkedList<Copy> getAll();
 	public LinkedList<Copy> getCopiesFor(Shop shop);
+	public int nextId();
 }

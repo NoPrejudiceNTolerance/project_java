@@ -8,7 +8,7 @@ public class Shop {
 	private String name;
 	private int id;
 	
-	public Shop(LinkedList<Copy> stock, String name, int id) {
+	public Shop(LinkedList<Copy> stock, int id, String name) {
 		this.stock = stock;
 		this.name = name;
 		this.id = id;

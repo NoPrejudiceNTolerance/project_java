@@ -151,4 +151,32 @@ public abstract class UserDAO implements IntUserDAO {
 		}
 		return user;
 	}
+	
+	@Override
+	public void modifyName(String name, User user) {
+		String sql = "UPDATE \"User\" SET name = ? WHERE id = ?";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql);
+			pStat.setInt(2, user.getId());
+			pStat.setString(1, name);
+			pStat.execute();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void modifyLastname(String lastname, User user) {
+		String sql = "UPDATE \"User\" SET lastname = ? WHERE id = ?";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql);
+			pStat.setInt(2, user.getId());
+			pStat.setString(1, lastname);
+			pStat.execute();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

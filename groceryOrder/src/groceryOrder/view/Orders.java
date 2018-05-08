@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import groceryOrder.controller.OrdersTableController;
 import groceryOrder.model.BO.Customer;
 
 public class Orders extends JPanel {
@@ -17,28 +18,22 @@ public class Orders extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Customer user;
 	private JLabel title;
 	private JTable table;
+	private final OrdersTableController controller = new OrdersTableController();
 	private final String[] TABLE_HEADS = {"Order ID", "Item", "State"};
 	
 	public Orders(Customer user) {
-		this.user = user;
 		this.setLayout(new BorderLayout());
 		this.title = new JLabel("<html><span style='font-size:20px; color: #1976d2'>"+ " My Orders " +"</span></html>");
-		Object[][] data = {{1, "Tomato", null}};
-		
-		int i = 0;
-		/*for(Order or : this.user.getOrders()) {
-			data[i] = or.toTable();
-			i++;
-		}*/
+		Object[][] data = controller.getOrdersFor(user);
 		this.table = new JTable(data, TABLE_HEADS);
-		table.setFont(new Font("Arial", Font.PLAIN, 16));
+		table.setRowHeight(30);
+		table.setFont(new Font("Arial", Font.PLAIN, 18));
 		buildPanel();
 	}
 
-	private void buildPanel() {
+	public void buildPanel() {
 		this.removeAll();
 		this.add(title, BorderLayout.PAGE_START);
 		this.add(new JScrollPane(table), BorderLayout.CENTER);

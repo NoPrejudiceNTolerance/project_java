@@ -73,7 +73,7 @@ public class CopyDAO implements IntCopyDAO {
 		LinkedList<Copy> copies = new LinkedList<Copy>();
 		ItemDAO daoItem = FactoryDAO.getItemDAO();
 		Item i = null;
-		String sql = "SELECT id_item, id FROM \"Copy\" WHERE id_Shop = ?";
+		String sql = "SELECT id_item, id FROM \"Copy\" WHERE id_Shop = ? AND \"Copy\".\"id_User\" IS NULL";
 		try {
 			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pStat.setInt(1, shop.getId());
@@ -88,6 +88,23 @@ public class CopyDAO implements IntCopyDAO {
 			e.printStackTrace();
 		}
 		return copies;
+	}
+
+	@Override
+	public int nextId() {
+		String sql = "SELECT max(id) FROM \"Copy\"";
+		try {
+			PreparedStatement pStat = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = pStat.executeQuery();
+			if(result.first()) {
+				return result.getInt(1) + 1;
+			}
+			result.close();
+			pStat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 1;
 	}
 
 }

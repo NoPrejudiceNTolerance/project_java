@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import groceryOrder.controller.ConnectAction;
 import groceryOrder.controller.GoToAction;
+import groceryOrder.controller.UserController;
 import groceryOrder.model.BO.User;
 
 public class LoginWindow extends JFrame{
@@ -26,9 +27,11 @@ public class LoginWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	private User user = null;
+	private UserController userControl;
 	
 	public LoginWindow() {
 		super();
+		userControl = new UserController();
 		build();	
 	}
 
@@ -97,7 +100,12 @@ public class LoginWindow extends JFrame{
 		if(user != null) {
 			this.setUser(user);
 			this.dispose();
-			AbstractAction goToApplication = new GoToAction("GoToApplication",new CustomerWindow(this.user));
+			AbstractAction goToApplication;
+			if(!userControl.isAdmin(user)) {
+				goToApplication = new GoToAction("GoToApplicationCustomer",new CustomerWindow(this.user));
+			} else {
+				goToApplication = new GoToAction("GoToApplicationAdmin", new AdminWindow(this.user));
+			}
 			goToApplication.actionPerformed(null);
 			return true;
 		} else {
