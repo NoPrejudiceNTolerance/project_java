@@ -17,17 +17,7 @@ import groceryOrder.view.LoginWindow;
 
 public class Main {
 
-	public static void main(String[] args) {
-		
-		CopyDAO daoCopy = FactoryDAO.getCopyDAO();
-		ItemDAO daoItem = FactoryDAO.getItemDAO();
-		ShopDAO daoShop = FactoryDAO.getShopDAO();
-		AdminDAO daoAdmin = FactoryDAO.getAdminDAO();
-		CustomerDAO daoCustomer = FactoryDAO.getCustomerDAO();
-		
-		
-
-		
+	public static void main(String[] args) {		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				LoginWindow window = new LoginWindow();
